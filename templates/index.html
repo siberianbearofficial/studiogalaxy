@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta name="yandex-verification" content="66dda3cfee772192"/>
+    <meta title="Студия звукозаписи “Галактика КАРАОКЕ”">
+    <meta name="description" content="Студия звукозаписи “Галактика КАРАОКЕ” - это созвездие лучших специалистов по записи вокала, звукорежиссеров и
+                    аранжировщиков! Мы предлагаем полный спектр услуг по работе со звуком как для профессиональных, так и для начинающих
+                    музыкантов и артистов. В вашем распоряжении прекрасное оборудование и подготовленные акустические условия! Вы получаете готовый продукт «под ключ»!">
+    <title>Студия звукозаписи “Галактика КАРАОКЕ”</title>
+    <link rel="stylesheet" href="{{ url_for("static", filename="css/base.css") }}">
+    <link rel="icon" type="image/png" href="{{ url_for("static", filename="img/logo.png") }}"/>
+</head>
+<body>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function (m, e, t, r, i, k, a) {
+        m[i] = m[i] || function () {
+            (m[i].a = m[i].a || []).push(arguments)
+        };
+        m[i].l = 1 * new Date();
+        for (var j = 0; j < document.scripts.length; j++) {
+            if (document.scripts[j].src === r) {
+                return;
+            }
+        }
+        k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+    })
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+    ym(91576956, "init", {
+        clickmap: true,
+        trackLinks: true,
+        accurateTrackBounce: true
+    });
+</script>
+<noscript>
+    <div><img src="https://mc.yandex.ru/watch/91576956" style="position:absolute; left:-9999px;" alt=""/></div>
+</noscript>
+<!-- /Yandex.Metrika counter -->
+
+{#        Header        #}
+<header class="header header-top">
+
+    {#    Burger button    #}
+    <div class="header_burger bg-black" onclick="changeNavbarVisibility()">
+        <svg width="32" height="32" viewBox="0 0 32 32">
+            <path fill="#ffffff"
+                  d="M5.333 22.667h21.333v-2.667h-21.333v2.667zM5.333 17.333h21.333v-2.667h-21.333v2.667zM5.333 9.333v2.667h21.333v-2.667h-21.333z"></path>
+        </svg>
+    </div>
+
+    {#    Menu    #}
+    <div class="header-logo pd-lr-20-pc">
+        {#    Logo      #}
+        <div class="header-logo" onclick="document.location.href='/'">
+            <img src="{{ url_for("static", filename="img/logo.svg") }}"
+                 alt="Логотип студии звукозаписи “Галактика КАРАОКЕ”"
+                 class="header-logo-img">
+            <div class="header-logo-label"><h1>Студия звукозаписи “Галактика КАРАОКЕ”</h1></div>
+        </div>
+        {#    Navbar    #}
+        <div class="navbar navbar_position invisible-mobile">
+            <div class="navbar_link" onclick="onNavbarLinkClick(2)">О НАС</div>
+            <div class="navbar_link" onclick="onNavbarLinkClick(6)">ПРИМЕРЫ РАБОТ</div>
+            <div class="navbar_link" onclick="onNavbarLinkClick(0)">СЕРТИФИКАТЫ</div>
+            <div class="navbar_link" onclick="onNavbarLinkClick(1)">ОПЛАТА</div>
+            <div class="navbar_link" onclick="onNavbarLinkClick(5)">КОНТАКТЫ</div>
+
+            <a class="contacts-link" href="tel:{{ tel_number }}">
+                <div class="navbar_tel">{{ tel_number }}</div>
+            </a>
+        </div>
+    </div>
+</header>
+
+
+{#        Cart        #}
+<div id="cart_overlay">
+    <div style="position: relative; overflow-y: scroll;">
+        <div id="cart_overlay_header" class="cart_overlay_header bg-dark">
+            <div id="cart_overlay_header_img" onclick="prepareAndHideCartOverlay()">
+                <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <polygon fill="#ffffff"
+                             points="427.314 107.313 404.686 84.687 256 233.373 107.314 84.687 84.686 107.313 233.373 256 84.686 404.687 107.314 427.313 256 278.627 404.686 427.313 427.314 404.687 278.627 256 427.314 107.313"></polygon>
+                </svg>
+            </div>
+        </div>
+
+        <div class="pd-20">
+            <div class="cart_overlay_heading mc-dark">Корзина</div>
+
+            <form action="/place_an_order" method="post">
+
+                <div class="cart_overlay_line"></div>
+
+                <div id="cart_overlay_container" class="mt-40 pd-b-20">
+                    <div class="cart_item z-3 fs-20 pd-b-15" style="display: none;">
+                        <table>
+                            <tr>
+                                <td valign="top">
+                                    <img src="" alt="Изображение товара или услуги" class="cart_item_img pd-r-15">
+                                </td>
+                                <td>
+                                    <div class="cart_item_heading mc-slightly-dark"></div>
+                                    <ul class="cart_item_list_value"></ul>
+                                    <div class="cart_item_price mc-slightly-light pd-t-20"><span
+                                            class="cart_item_price_value"></span> р.
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="cart_overlay_line"></div>
+
+                <div class="services">
+                    <div class="center_text">
+                        <div class="heading mc-dark">Дополнительные услуги</div>
+                        {#                        <div class="content_block">#}
+                        {#                            #}
+                        {#                        </div>#}
+                    </div>
+
+                    <div class="services_grid">
+                        {% for service_id, service in services.items() %}
+                            <div class="service_card pd-10 mt-20">
+                                <div class="service_card_heading mc-slightly-dark">
+                                    {{ service['name'] }}
+                                </div>
+                                <div class="service_card_description">
+                                    {{ service['description'] }}
+                                </div>
+                                <div class="service_card_img">{{ url_for("static", filename=("img/services/" + service['img'])) }}</div>
+                                <table>
+                                    <tr>
+                                        <td class="service_card_price pd-r-30 mc-slightly-light">
+                                            <span class="service_card_price_value">{{ service['price'] }}</span> р.
+                                        </td>
+                                        <td class="service_card_to_cart_button" onclick="addItemToCart(this)">
+                                            В корзину
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div class="product_id" style="display: none;">1{{ service_id }}</div>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    {#        <div class="services_show_all_button">Показать все</div>#}
+                </div>
+
+                <div class="cart_overlay_line"></div>
+
+                <div class="cart_overlay_subtotal">Сумма: <span class="subtotal_price">48 200</span> р.</div>
+
+                <div class="cart_personal_information">
+                    <div class="cart_large_text_field">
+                        <label for="cart_buyer_name_input" class="label_for_large_input">Полное имя покупателя</label>
+                        <input type="text" placeholder="Иванов Евгений" required class="cart_large_input"
+                               id="cart_buyer_name_input"
+                               name="cart_buyer_name_input">
+                    </div>
+                    <div class="cart_large_text_field">
+                        <label for="cart_recipient_name_input" class="label_for_large_input">Полное имя получателя
+                            (необязательно)</label>
+                        <input type="text" placeholder="Иванова Ольга" class="cart_large_input"
+                               id="cart_recipient_name_input"
+                               name="cart_recipient_name_input">
+                    </div>
+                    <div class="cart_large_text_field">
+                        <label for="cart_email_input" class="label_for_large_input">Email для чека и сертификата</label>
+                        <input type="email" required class="cart_large_input" id="cart_email_input"
+                               name="cart_email_input">
+                    </div>
+                    <div class="cart_large_text_field">
+                        <label for="cart_tel_input" class="label_for_large_input">Ваш номер телефона</label>
+                        <input type="tel" required class="cart_large_input" id="cart_tel_input" name="cart_tel_input">
+                    </div>
+                    {#                    <div class="cart_overlay_subheading">Доставка</div>#}
+                    {#                    <div class="cart_large_text_field">#}
+                    {#                        <label class="label_for_large_input" for="cart_city_input">Город</label>#}
+                    {#                        <input type="text" class="cart_large_input" id="cart_city_input" name="cart_city_input"#}
+                    {#                               value="Москва"#}
+                    {#                               readonly>#}
+                    {#                    </div>#}
+                </div>
+                {#                <div class="cart_delivery_method_fieldset">#}
+                {#                    <div class="cart_delivery_method_radio">#}
+                {#                        <input value="0" type="radio" id="cart_delivery_method_radio_button1"#}
+                {#                               name="cart_delivery_method_radio_button"#}
+                {#                               disabled="disabled"#}
+                {#                               class="cart_delivery_method_radio_button">#}
+                {#                        <label for="cart_delivery_method_radio_button1">Срочная доставка*</label>#}
+                {#                    </div>#}
+                {#                    <div class="cart_delivery_method_radio">#}
+                {#                        <input value="1" type="radio" id="cart_delivery_method_radio_button2"#}
+                {#                               name="cart_delivery_method_radio_button"#}
+                {#                               disabled="disabled"#}
+                {#                               class="cart_delivery_method_radio_button">#}
+                {#                        <label for="cart_delivery_method_radio_button2">Стандартная доставка (в пределах МКАД)</label>#}
+                {#                    </div>#}
+                {#                    <div class="cart_delivery_method_radio">#}
+                {#                        <input value="2" type="radio" id="cart_delivery_method_radio_button3"#}
+                {#                               name="cart_delivery_method_radio_button"#}
+                {#                               disabled="disabled"#}
+                {#                               class="cart_delivery_method_radio_button">#}
+                {#                        <label for="cart_delivery_method_radio_button3">Доставка за МКАД (5км)</label>#}
+                {#                    </div>#}
+                {#                    <div class="cart_delivery_method_radio">#}
+                {#                        <input value="3" type="radio" id="cart_delivery_method_radio_button4"#}
+                {#                               name="cart_delivery_method_radio_button"#}
+                {#                               checked="checked"#}
+                {#                               class="cart_delivery_method_radio_button">#}
+                {#                        <label for="cart_delivery_method_radio_button4">Получить в электронном виде</label>#}
+                {#                    </div>#}
+                {#                    <div class="cart_delivery_method_radio">#}
+                {#                        <input value="4" type="radio" id="cart_delivery_method_radio_button5"#}
+                {#                               name="cart_delivery_method_radio_button"#}
+                {#                               disabled="disabled"#}
+                {#                               class="cart_delivery_method_radio_button">#}
+                {#                        <label for="cart_delivery_method_radio_button5">Бесплатно (Сумма заказа более 30 000#}
+                {#                            руб.)*</label>#}
+                {#                    </div>#}
+                {#                    <div class="cart_delivery_method_radio">#}
+                {#                        <input value="5" type="radio" id="cart_delivery_method_radio_button6"#}
+                {#                               name="cart_delivery_method_radio_button"#}
+                {#                               disabled="disabled"#}
+                {#                               class="cart_delivery_method_radio_button">#}
+                {#                        <label for="cart_delivery_method_radio_button6">Самовывоз*</label>#}
+                {#                    </div>#}
+                {#                </div>#}
+
+                {#<div class="cart_delivery_clarification">*Доставка в течение 3 часов.</div>
+
+                <div class="cart_large_text_field">
+                    <label class="label_for_large_input" for="cart_delivery_street">Улица</label>
+                    <input type="text" class="cart_large_input" id="cart_delivery_street" name="cart_delivery_street">
+                </div>
+                <div class="cart_small_text_fields_group">
+                    <div class="cart_small_text_field_container">
+                        <div class="cart_small_text_field_left">
+                            <label class="label_for_large_input" for="cart_delivery_house">Дом</label>
+                            <input type="text" class="cart_large_input" id="cart_delivery_house"
+                                   name="cart_delivery_house">
+                        </div>
+                    </div>
+                    <div class="cart_small_text_field_container">
+                        <div class="cart_small_text_field_right">
+                            <label class="label_for_large_input" for="cart_delivery_apartment">Квартира</label>
+                            <input type="number" class="cart_large_input" id="cart_delivery_apartment"
+                                   name="cart_delivery_apartment">
+                        </div>
+                    </div>
+                </div>#}
+
+                <div class="cart_large_text_field">
+                    <label class="label_for_large_input" for="cart_delivery_promo">Промокод</label>
+                    <input type="text" class="cart_large_input" id="cart_delivery_promo" name="cart_delivery_promo">
+                </div>
+                <div class="cart_large_text_field">
+                    <label class="label_for_large_input" for="cart_delivery_comment">Комментарий к заказу, дата и время
+                        доставки</label>
+                    <input type="text" class="cart_large_input" id="cart_delivery_comment"
+                           name="cart_delivery_comment">
+                </div>
+
+                <div class="label_for_large_input mt-40">Способ оплаты</div>
+                <div class="cart_delivery_method_fieldset">
+                    <div class="cart_delivery_method_radio">
+                        <input value="0" type="radio" id="cart_payment_radio_button1"
+                               name="cart_payment_radio_button"
+                               class="cart_delivery_method_radio_button">
+                        <label for="cart_payment_radio_button1">Наличными во время записи</label>
+                    </div>
+                    <div class="cart_delivery_method_radio">
+                        <input value="1" type="radio" id="cart_payment_radio_button2"
+                               name="cart_payment_radio_button"
+                               class="cart_delivery_method_radio_button" checked="checked">
+                        <label for="cart_payment_radio_button2">Безналичная оплата</label>
+                    </div>
+                </div>
+
+                <div class="cart_overlay_summary">
+                    Сумма: <span class="subtotal_price">48 200</span> р.<br>
+                    {#                    Срочная доставка*: <span class="delivery_price">2 000</span> р.<br>#}
+                    <div class="cart_overlay_summary_line cart_overlay_total">Итоговая сумма: <span class="total_price">50 200</span>
+                        р.
+                    </div>
+                </div>
+
+                <input type="text" value="" style="display: none;" id="cart_dict" name="cart_dict">
+                <input type="submit"
+                       onclick="alert('Заказ оформлен! Ожидайте звонка менеджера на указанный номер телефона.')"
+                       class="cart_submit_button bg-slightly-dark mc-white" value="Оформить заказ">
+            </form>
+            <div class="cart_overlay_footer">После оформления заказа ожидайте звонка менеджера на указанный номер
+                телефона.<br>Мы
+                постараемся ответить как можно скорее.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="cart_button_container" onclick="prepareAndShowCartOverlay()">
+    <svg class="cart_button_img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <style>.cls-1, .cls-2 {
+                fill: none;
+            }
+
+            .cls-2 {
+                stroke: #000;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+            }</style>
+        </defs>
+        <g data-name="Layer 2" id="Layer_2">
+            <g id="Workspace">
+                <rect class="cls-1" height="24" width="24"/>
+                <rect class="cls-2" height="9" width="10" x="7" y="9"/>
+                <path class="cls-2" d="M10,10V8a2,2,0,0,1,2-2h0a2,2,0,0,1,2,2v2"/>
+            </g>
+        </g>
+    </svg>
+    <div id="cart_button">0</div>
+</div>
+
+
+<main id="body">
+    <div class="container">
+        <div id="about" class="about">
+            {#        <div class="about-bg"></div>#}
+            <div class="about_studio_img">
+                <img src="{{ url_for("static", filename="img/studio_pics/about_studio_3.jpg") }}"
+                     alt="Фото студии"
+                     id="about_studio_img">
+            </div>
+            <div class="about_studio_text">
+                <div class="heading mc-white"><h2>Немного о нас</h2></div>
+                <div class="content_block mc-light">
+                    Студия звукозаписи “Галактика КАРАОКЕ” - это созвездие лучших специалистов по записи вокала,
+                    звукорежиссеров и
+                    аранжировщиков!
+                    Наши
+                    специалисты помогут Вам спеть и записать любую песню! С НАМИ ЗАПОЕТ КАЖДЫЙ!<br>
+                    В вашем распоряжении прекрасное оборудование и подготовленные акустические условия!<br>
+                    Звукозаписывающая студия “Галактика КАРАОКЕ” относится к классу HI END, столь редкому у нас даже в
+                    настоящее
+                    время.
+                    Оборудование студии удивит даже самого требовательного продюсера.<br><br>
+                    Мы предлагаем полный спектр услуг по работе со звуком как для профессиональных, так и для начинающих
+                    музыкантов и артистов:<br>
+                    - минус караоке и авторская аранжировка,<br>
+                    - запись голоса и инструментов,<br>
+                    - редакция и сведение записанных партий,<br>
+                    - финальный мастеринг.<br><br>
+                    Вы получаете готовый продукт «под ключ»!
+                </div>
+            </div>
+        </div>
+        <div class="equipment">
+            <div class="heading mc-white"><h2>Оборудование студии</h2></div>
+            <div class="content_block mc-light">
+                <h3><b>Микрофоны:</b></h3> Neumann U47 / Neumann U87, AKG С12, Telefunken ELA M251
+                <br>
+                <h3><b>АЦП:</b></h3> APOGEE / DNS / PHYRAMIX
+                <br>
+                <h3><b>Преампы:</b></h3> UNIVERSAL AUDIO / MANLEY / NEAVE / SUMMIT
+                <br>
+            </div>
+        </div>
+        <div class="equipment_logo_table pd-tb-40">
+            <div class="equipment_logo">
+                <img src="{{ url_for('static', filename='img/equipment_logo/lg_akg.svg') }}" alt="Логотип AKG">
+            </div>
+            <div class="equipment_logo">
+                <img src="{{ url_for('static', filename='img/equipment_logo/lg_apogee.svg') }}" alt="Логотип APOGEE">
+            </div>
+            <div class="equipment_logo">
+                <img src="{{ url_for('static', filename='img/equipment_logo/lg_neumann.svg') }}" alt="Логотип NEUMANN">
+            </div>
+            <div class="equipment_logo">
+                <img src="{{ url_for('static', filename='img/equipment_logo/lg_pro-tools.svg') }}"
+                     alt="Логотип PRO TOOLS">
+            </div>
+            <div class="equipment_logo">
+                <img src="{{ url_for('static', filename='img/equipment_logo/lg_telefunken.svg') }}"
+                     alt="Логотип TELEFUNKEN">
+            </div>
+            <div class="equipment_logo">
+                <img src="{{ url_for('static', filename='img/equipment_logo/lg_universal_audio.svg') }}"
+                     alt="Логотип UNIVERSAL AUDIO">
+            </div>
+        </div>
+    </div>
+
+
+    {#  PHOTO CAROUSEL  #}
+
+    <div class="photo_carousel" id="photo_carousel">
+        <img src="{{ url_for('static', filename='img/') }}" alt="Фото студии в карусели" class="photo_carousel_img">
+        <div class="photo_carousel_overlay">
+            <div class="photo_carousel_button_container">
+                <div class="photo_carousel_button" onclick="turnCarousel(-1)"><</div>
+            </div>
+            <div class="photo_carousel_button_container">
+                <div class="photo_carousel_button" onclick="turnCarousel(1)">></div>
+            </div>
+        </div>
+    </div>
+    <div class="photo_carousel_dots pd-t-20 pd-b-30">
+        <div class="photo_carousel_dot" style="display: none;"></div>
+    </div>
+
+    <div class="container bg-grey">
+        <div id="examples" class="examples">
+            <div class="center_text">
+                <div class="heading mc-dark"><h2>Примеры работ</h2></div>
+
+                <div class="content_block pd-15">
+                    {#                Audio player                  #}
+                    <div class="example_audio_container">
+                        <div class="example_audio pd-b-15" style="display: none;">
+                            <audio preload="metadata" src="{{ url_for('static', filename='audio/') }}" controls></audio>
+                            <div style="display: flex; justify-content: center; align-items: center;" class="pd-l-15">
+                                <div class="example_audio_title">Название трека</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="certificates" class="certificates">
+            <div class="center_text">
+                {#                <div class="certificates_subheading mc-light-grey fs-10 pd-b-30">ПОДАРКИ САМЫМ ЦЕННЫМ</div>#}
+                <div class="heading mc-dark"><h2>Электронные сертификаты</h2></div>
+
+                <div class="content_block pd-15">
+                    Вы можете заказать сертификат в электронном виде на почту, оплатив картой или наличными перед
+                    записью.
+                    <br>
+                    Мы сделали для Вас цены максимально низкими, а качество максимально высоким!
+                </div>
+            </div>
+            <div class="certificate_cards">
+                {% for certificate_id, certificate_card in certificate_cards.items() %}
+                    <div class="certificate_card">
+                        <img src="{{ url_for("static", filename=("img/certificates/" + certificate_card['img'])) }}"
+                             alt="{{ certificate_card['heading'] }}"
+                             class="certificate_card_img">
+                        <div class="certificate_card_heading mc-slightly-dark">{{ certificate_card['heading'] }}</div>
+                        <ul class="certificate_card_list">
+                            {% for line in certificate_card['list'] %}
+                                <li>{{ line }}</li>
+                            {% endfor %}
+                        </ul>
+                        <div></div>
+                        <div class="certificate_card_price">
+                            <span class="certificate_card_price_value">{{ certificate_card['price'] }}</span> р.
+                            <s class="mc-light-grey"><span>{{ certificate_card['old_price'] }}</span> р.</s>
+                        </div>
+                        <div class="btn-dark bg-slightly-dark br-5" onclick="addItemToCart(this)">Купить</div>
+                        <div class="product_id" style="display: none;">0{{ certificate_id }}</div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {#    <div class="vip_certificates pd-20">#}
+        {#        <div class="heading">#}
+        {#            Сертификат со статусом VIP - Запись в эксклюзивной VIP студии - главное отличие от стандартных сертификатов#}
+        {#        </div>#}
+        {#        <div class="content_block">#}
+        {#            <div class="pd-t-15 pd-b-20 fs-20 mc-slightly-dark ls-1">#}
+        {#                Для настоящих ценителей музыки. Необычный, оригинальный подарок.#}
+        {#            </div>#}
+        {#            Каждый VIP сертификат включает в себя максимальный спектр услуг, который позволяет окунуться в творческую#}
+        {#            обстановку с головой. Почувствуйте себя настоящей звездой.#}
+        {#            <br><br>#}
+        {#            <b>Отличия от стандартных сертификатов:</b>#}
+        {#            <br>#}
+        {#            <ul>#}
+        {#                <li>Подарочная упаковка LUXE</li>#}
+        {#                <li>Запись производится в VIP студии!!!</li>#}
+        {#                <li>Запись ведет ведущий звукорежиссер студии</li>#}
+        {#                <li>Аренда студии без ограничения по времени</li>#}
+        {#                <li>Активация сертификата через Call центр</li>#}
+        {#                <li>Персональный куратор проекта</li>#}
+        {#                <li>Приоритетный выбор времени записи</li>#}
+        {#                <li>Персональный подбор фонограммы</li>#}
+        {#                <li>Фотосессия во время записи</li>#}
+        {#                <li>Запись бэк-вокала нашими профессионалами (по желанию)</li>#}
+        {#                <li>Исполнять песни могут разные участники*</li>#}
+        {#                <li>Неограниченно количество посещения студии для записи**</li>#}
+        {#                <li>Правка песен по желанию клиента</li>#}
+        {#                <li>Бокал вина Вам и Вашим гостям (по желанию)</li>#}
+        {#                <li>Доставка сертификата в пределах МКАД бесплатно</li>#}
+        {#                <li>Сертификат действует 1 год с даты продажи</li>#}
+        {#            </ul>#}
+        {#            * Не более одного участника в одной песне, доплата за дуэт, трио и более согласно прайсу.<br>#}
+        {#            ** Не менее одной песни за одно посещение. Не распространяется на сертификат СИНГЛ VIP.#}
+        {#        </div>#}
+        {#        {% for vip_certificate_card in vip_certificate_cards %}#}
+        {#            <div class="certificate_card pd-t-30">#}
+        {#                <img src="{{ url_for("static", filename=("img/certificates/" + vip_certificate_card['img'])) }}"#}
+        {#                     alt="{{ vip_certificate_card['heading'] }}"#}
+        {#                     class="certificate_card_img">#}
+        {#                <div class="certificate_card_heading">{{ vip_certificate_card['heading'] }}</div>#}
+        {#                <ul class="certificate_card_list pd-t-20">#}
+        {#                    {% for line in vip_certificate_card['list'] %}#}
+        {#                        <li>{{ line }}</li>#}
+        {#                    {% endfor %}#}
+        {#                </ul>#}
+        {#                <div class="certificate_card_price pd-t-20">#}
+        {#                    <span class="certificate_card_price_value">{{ vip_certificate_card['price'] }}</span> р.#}
+        {#                    <s class="mc-slightly-light"><span>{{ vip_certificate_card['old_price'] }}</span> р.</s>#}
+        {#                </div>#}
+        {#                <div class="btn-dark br-5 mt-20" onclick="addItemToCart(this)">Купить</div>#}
+        {#            </div>#}
+        {#        {% endfor %}#}
+        {#    </div>#}
+        {#    <div id="reviews" class="pd-20 bg-grey">#}
+        {#        <div class="heading">#}
+        {#            <div class="center_text">#}
+        {#                Отзывы клиентов#}
+        {#            </div>#}
+        {#        </div>#}
+        {#        {% for review in reviews %}#}
+        {#            <div class="review mb-40">#}
+        {#                <img src="{{ url_for("static", filename="img/yandex_icon.png") }}" alt="" class="yandex_icon">#}
+        {#                <div class="review_bubble">#}
+        {#                    <div class="reviewer_name">#}
+        {#                        {{ review['name'] }}#}
+        {#                    </div>#}
+        {#                    <div class="yandex_info">#}
+        {#                        {{ review['yandex_info'] }}#}
+        {#                    </div>#}
+        {#                    <div class="review_text">#}
+        {#                        {{ review['review_text'] }}#}
+        {#                    </div>#}
+        {#                </div>#}
+        {#            </div>#}
+        {#        {% endfor %}#}
+        {#    </div>#}
+
+        <div id="payment" class="payment">
+            <div class="center_text">
+                <div class="heading mc-dark">
+                    <h2>Оплата</h2>
+                </div>
+            </div>
+            <div class="content_block">
+                <h3><b class="mc-slightly-dark">Наличными во время записи</b></h3>
+                <br>
+                Если в качестве формы оплаты Вы выбрали "Наличными во время записи", после оформления заказа наш
+                менеджер
+                свяжется с
+                Вами для его подтверждения. Сама оплата будет производиться непосредственно на студии.
+                <br><br>
+                <h3><b class="mc-slightly-dark">Безналичная оплата</b></h3>
+                <br>
+                После оформления заказа наш менеджер свяжется с Вами для его подтверждения, далее — вышлет ссылку на
+                оплату.
+                Сервис оплаты предоставляет "ОАО Робокасса", что дает возможность оплачивать банковскими картами (Visa,
+                Mastercard, МИР и др.), сервисами быстрых платежей, таких как Apple Pay, Google Pay и др.
+                <br>
+                После проведения платежа наш менеджер свяжется с Вами для последующих действий.
+                <br><br>
+                Конфиденциальность сообщаемой персональной информации при безналичном расчете обеспечивается "ОАО
+                Робокасса".
+            </div>
+        </div>
+        {#    <div id="delivery" class="delivery">#}
+        {#        <div class="center_text">#}
+        {#            <div class="heading">#}
+        {#                Доставка#}
+        {#            </div>#}
+        {#        </div>#}
+        {#        <div class="content_block">#}
+        {#            Возможна доставка по Москве в день заказа по согласованию.#}
+        {#            <br>#}
+        {#            Доставка осуществляется в любой удобный для Вас день и время.#}
+        {#            <br><br>#}
+        {#            Самовывоз возможен только после оформления заказа и его подтверждения.#}
+        {#            <br>#}
+        {#            Стоимость в пределах МКАД — 450 руб.#}
+        {#            <br>#}
+        {#            Доставка за МКАД (в пределах 5 км) — 1000 руб.#}
+        {#            <br>#}
+        {#            Стоимость срочной доставки (в течении 3 часов в пределах МКАД) — 2000 руб.#}
+        {#            <br><br>#}
+        {#            <b>Сертификаты ВИП доставляются бесплатно.</b>#}
+        {#            <br>#}
+        {#            При заказе на сумму от 20 000 руб. — доставка бесплатная (кроме срочной).#}
+        {#            <br><br>#}
+        {#            Уважаемые клиенты, если Вы хотите приехать, посмотреть студию,#}
+        {#            это возможно только по предварительной договоренности.#}
+        {#        </div>#}
+        {#    </div>#}
+        {#    <div class="faq">#}
+        {#        <div class="center_text">#}
+        {#            <div class="heading">Вопрос — ответ</div>#}
+        {#            <div class="content_block">#}
+        {#                Мы постарались ответить на самые важные вопросы наших клиентов. Напишите нам на email, или позвоните,#}
+        {#                если#}
+        {#                не нашли ответ на интересующий Вас вопрос.#}
+        {#            </div>#}
+        {#        </div>#}
+        {#        <div class="questions">#}
+        {#            {% for question in questions %}#}
+        {#                <div class="question">#}
+        {#                    <div class="question_name_container">#}
+        {#                        <div class="question_name">#}
+        {#                            {{ question['name'] }}#}
+        {#                        </div>#}
+        {#                        <div class="question_icon">+</div>#}
+        {#                    </div>#}
+        {#                    <div class="question_answer">#}
+        {#                        {{ question['answer'] }}#}
+        {#                    </div>#}
+        {#                </div>#}
+        {#            {% endfor %}#}
+        {#        </div>#}
+        {##}
+        {#    </div>#}
+        <div id="contacts" class="pd-20 bg-grey">
+            <div class="heading mc-dark"><h2>Контактная информация</h2></div>
+            <div class="content_block">
+                <h3>Адрес студии:</h3>
+                <br>
+                Москва, Ленинский проспект, 102с1
+                <br><br>
+                <a class="contacts-link mc-slightly-dark"
+                   href="tel:{{ tel_number.replace(' ', '').replace('-', '') }}">{{ tel_number }}</a>
+                <br>
+                <a class="contacts-link mc-slightly-dark"
+                   href="mailto:support@studiogalaxy.ru">support@studiogalaxy.ru</a>
+                <br><br>
+                <h3>Время работы:</h3>
+                <br>
+                Пн-Вс 12:00 — 20:00
+            </div>
+            <div id="map">
+                {#                <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A67cbde061ebe6075cd5e33b93e9c69e1400645595ec24ddaacb41c60fb7b42f2&amp;source=constructor"#}
+                {#                        width="100%" height="320" frameborder="0"></iframe>#}
+                <iframe src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=2229181757" width="100%" height="320"
+                        frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="pd-l-20">
+            <img src="{{ url_for("static", filename="img/logo.svg") }}"
+                 alt="Логотип студии звукозаписи “Галактика КАРАОКЕ”"
+                 id="footer_logo">
+
+            <div class="social_networks mb-20">
+
+                {#        VK        #}
+                <a href="{{ footer_links['vk'] }}" target="_blank">
+                    <div class="social_network bg-slightly-dark">
+                        <svg enable-background="new 0 0 100 100" height="20px" version="1.1" viewBox="0 0 100 100"
+                             width="20px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink"><g id="color_x5F_fill"><path d="M84.418,69.921c-2.527,1.583-12.807,2.054-15.295,0.246c-1.365-0.991-2.613-2.232-3.799-3.412   c-0.828-0.826-1.77-1.227-2.482-2.123c-0.58-0.734-0.979-1.599-1.592-2.321c-1.033-1.215-2.625-2.248-3.885-0.764   c-1.895,2.231,0.299,6.617-2.229,8.285c-0.848,0.56-1.703,0.722-2.762,0.642l-2.346,0.107c-1.379,0.027-3.562,0.039-5.129-0.244   c-1.75-0.315-3.193-1.271-4.773-1.973c-3.002-1.331-5.863-3.145-8.039-5.658c-5.922-6.843-13.877-16.255-16.967-24.859   c-0.637-1.768-2.314-5.267-0.723-6.784c2.164-1.572,12.789-2.017,14.445,0.416c0.674,0.987,1.098,2.436,1.574,3.555   c0.592,1.396,0.914,2.713,1.84,3.949c0.82,1.097,1.426,2.199,2.061,3.402c0.713,1.349,1.385,2.643,2.252,3.886   c0.588,0.845,2.143,2.524,3.125,2.65c2.398,0.307,2.248-5.521,2.07-6.945c-0.17-1.371-0.215-2.825-0.17-4.216   c0.039-1.186,0.146-2.857-0.557-3.826c-1.145-1.58-3.695-0.397-3.895-2.52c0.422-0.603,0.332-1.138,3.146-2.064   c2.215-0.729,3.646-0.706,5.107-0.589c2.98,0.239,6.139-0.568,9.014,0.398c2.746,0.925,2.322,4.828,2.23,7.168   c-0.123,3.195,0.008,6.312,0,9.553c-0.004,1.477-0.062,2.912,1.736,2.793c1.688-0.113,1.859-1.532,2.664-2.704   c1.121-1.633,2.148-3.288,3.289-4.916c1.537-2.199,2-4.67,3.447-6.923c0.518-0.807,0.963-2.568,1.76-3.205   c0.604-0.481,1.75-0.275,2.48-0.275h2.736c1.33,0.016,2.686,0.035,4.051,0.083c1.967,0.068,4.17-0.359,6.121-0.084   c8.416,1.188-10.578,19.191-9.59,22.403c0.684,2.218,5.016,4.703,6.58,6.521C82.998,61.991,89.389,66.81,84.418,69.921z" fill="#ffffff"/></g>
+                            <g id="offset_x5F_print_x5F_outline"/></svg>
+                    </div>
+                </a>
+                <div class="pd-5"></div>
+
+                {#        Instagram        #}
+                <a href="{{ footer_links['instagram'] }}" target="_blank">
+                    <div class="social_network bg-slightly-dark">
+                        <svg enable-background="new 0 0 1024 1024" height="10px" id="Layer_1" version="1.1"
+                             viewBox="0 0 1024 1024" width="10px" xml:space="preserve"
+                             xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink"><g><g><path clip-rule="evenodd" d="M512.305,0.122c70.856,0,141.717-0.328,212.571,0.094     c66.662,0.398,129.269,15.6,183.515,56.125c70.84,52.923,107.091,125.214,113.838,212.445c2.376,30.7,1.637,61.667,1.677,92.512     c0.161,119.619,0.072,239.239,0.059,358.86c-0.005,48.856-6.799,96.557-27.473,141.232     c-41.938,90.623-115.091,140.165-211.608,157.334c-20.125,3.579-40.886,4.916-61.359,4.977     c-141.333,0.417-282.669,0.321-424.003,0.174c-73.495-0.075-140.713-19.483-197.994-67.166     c-58.197-48.439-88.907-111.793-98.46-186.071c-1.648-12.811-2.657-25.805-2.669-38.714     C0.261,583.352-0.636,434.771,0.82,286.214c0.796-81.166,27.822-153.13,88.244-209.835     c50.119-47.032,111.04-71.607,178.739-74.012c81.404-2.892,162.991-0.685,244.499-0.685     C512.303,1.161,512.303,0.641,512.305,0.122z M511.505,929.369c68.18,0,136.358,0.274,204.534-0.188     c17.83-0.121,35.919-1.007,53.414-4.171c66.827-12.081,117.634-45.6,144.26-110.67c13.528-33.055,17.946-68.524,18.522-102.876     c2.237-133.271,0.976-266.602,0.819-399.911c-0.018-14.442-0.174-29.045-2.217-43.295     c-9.163-63.988-36.903-116.435-95.792-148.329c-32.869-17.801-68.551-24.522-105.64-24.534     c-142.831-0.042-285.662-0.084-428.492,0.087c-12.908,0.016-25.93,0.73-38.702,2.525     c-72.746,10.214-126.329,46.066-153.145,116.6c-10.822,28.463-14.28,58.288-14.286,88.569     c-0.021,139.403-0.155,278.803,0.183,418.208c0.041,17.055,1.313,34.355,4.366,51.114     c13.543,74.355,55.004,125.461,128.843,146.011c24.606,6.845,50.909,9.868,76.522,10.384     C373.608,930.277,442.565,929.364,511.505,929.369z" fill-rule="evenodd" fill="#ffffff"/><path
+                                clip-rule="evenodd"
+                                d="M775.903,510.369c-0.064,145.777-119.005,264.347-264.821,263.991     c-145.871-0.353-263.345-118.096-263.43-264.029C247.567,364.56,366.331,245.98,512.255,246.139     C656.921,246.295,775.968,365.605,775.903,510.369z M511.878,679.188c93.007,0.071,169.609-76.475,169.448-169.325     c-0.161-92.206-76.568-168.757-168.818-169.132c-92.873-0.377-169.438,75.935-169.635,169.074     C342.677,603.077,418.542,679.114,511.878,679.188z"
+                                fill-rule="evenodd" fill="#ffffff"/><path clip-rule="evenodd"
+                                                                          d="M785.693,299.338c-33.019-0.295-59.047-26.717-58.941-59.832     c0.104-33.491,26.785-59.75,60.471-59.52c32.644,0.226,59.246,27.168,59.147,59.904     C846.27,273.09,819.174,299.637,785.693,299.338z"
+                                                                          fill-rule="evenodd"
+                                                                          fill="#ffffff"/></g></g></svg>
+                    </div>
+                </a>
+                <div class="pd-5"></div>
+
+                {#        TODO: replace Telegram button with OK button as we don't have Telegram channel yet but already have OK group        #}
+
+                {#        Telegram        #}
+                <a href="{{ footer_links['telegram'] }}" target="_blank">
+                    <div class="social_network bg-slightly-dark">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="10px" height="10px"
+                             viewBox="0 0 512 512"
+                             enable-background="new 0 0 512 512">
+                            <path d="M470.4354553,45.4225006L16.8273029,221.2490387c-18.253809,8.1874695-24.4278889,24.5854034-4.4127407,33.4840851l116.3710175,37.1726685l281.3674316-174.789505c15.3625488-10.9733887,31.0910339-8.0470886,17.5573425,4.023468L186.0532227,341.074646l-7.5913849,93.0762329c7.0313721,14.3716125,19.9055786,14.4378967,28.1172485,7.2952881l66.8582916-63.5891418l114.5050659,86.1867065c26.5942688,15.8265076,41.0652466,5.6130371,46.7870789-23.3935242L509.835083,83.1804428C517.6329956,47.474514,504.3345032,31.7425518,470.4354553,45.4225006z"
+                                  fill="#ffffff"/>
+                        </svg>
+                    </div>
+                </a>
+            </div>
+
+            <div id="footer_name" class="mc-white">© 2022 Студия звукозаписи “Галактика КАРАОКЕ”</div>
+        </div>
+        <div class="footer_group">
+            <div class="footer_headings mc-white">СТУДИЯ</div>
+            <div class="footer_text mc-light" onclick="onNavbarLinkClick(2)">О нас</div>
+            {#            <div class="footer_text">Наша команда</div>#}
+            <div class="footer_text mc-light" onclick="onNavbarLinkClick(5)">Контактная информация</div>
+        </div>
+        <div class="footer_group">
+            <div class="footer_headings mc-white">УСЛУГИ</div>
+            <div class="footer_text mc-light" onclick="onNavbarLinkClick(6)">Примеры работ</div>
+            <div class="footer_text mc-light" onclick="onNavbarLinkClick(0)">Сертификаты</div>
+            {#            <div class="footer_text">Сертификаты со статусом VIP</div>#}
+            {#            <div class="footer_text mc-light" onclick="onNavbarLinkClick(4)">Цены на услуги</div>#}
+            <div class="footer_text mc-light" onclick="onNavbarLinkClick(1)">Оплата</div>
+            {#            <div class="footer_text" onclick="onNavbarLinkClick(2)">Доставка</div>#}
+        </div>
+        {#            <div class="footer_headings">ПОМОЩЬ</div>#}
+        {#            <div class="footer_text">Активация сертификата</div>#}
+        {#            <div class="footer_text">Вопросы и ответы</div>#}
+        {#            <div class="footer_text">Условия соглашения / Правила активации и возврата</div>#}
+        {#            <div class="footer_text">Политика в отношении обработки персональных данных</div>#}
+    </footer>
+    {#    <div class="pd-tb-40"></div>#}
+</main>
+
+{#      SCRIPTS       #}
+<script type="text/javascript" src="{{ url_for("static", filename="js/screen.js") }}"></script>
+<script type="text/javascript" src="{{ url_for("static", filename="js/burger_button.js") }}"></script>
+<script type="text/javascript" src="{{ url_for("static", filename="js/cart.js") }}"></script>
+<script type="text/javascript" src="{{ url_for("static", filename="js/photo_carousel.js") }}"></script>
+<script type="text/javascript" src="{{ url_for("static", filename="js/examples.js") }}"></script>
+</body>
+</html>
