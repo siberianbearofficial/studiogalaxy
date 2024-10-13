@@ -1,0 +1,25 @@
+@if (images$ | async; as images) {
+    @if (selectedImage$ | async; as selectedImage) {
+        <div class="image">
+            <img [src]="selectedImage.img" [alt]="selectedImage.name" />
+            <div class="image__overlay">
+                <div class="button" (click)="previousImage()"><</div>
+                <div class="button" (click)="nextImage()">></div>
+            </div>
+        </div>
+    }
+
+    @if (selectedImageId$ | async; as selectedImageId) {
+        <div class="dots pd-t-20 pd-b-30">
+            @for (image of images; track image.id) {
+                <div
+                    class="dot"
+                    (click)="setSelectedImageId(image.id)"
+                    [ngClass]="{
+                        'dot-selected': image.id === selectedImageId,
+                    }"
+                ></div>
+            }
+        </div>
+    }
+}
