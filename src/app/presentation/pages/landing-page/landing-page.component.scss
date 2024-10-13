@@ -58,10 +58,6 @@
     cursor: pointer;
 }
 
-.example_audio {
-    display: flex;
-}
-
 // Certificate
 
 .certificate_cards {
@@ -129,11 +125,6 @@
 /*Contacts*/
 #map {
     margin-top: 40px;
-}
-
-.center_text {
-    text-align: center;
-    width: 100%;
 }
 
 /*  Footer  */
@@ -266,13 +257,6 @@ footer {
         visibility: collapse;
     }
 
-    .heading {
-        font-weight: bold;
-        font-size: 30px;
-        padding-top: 15px;
-        padding-bottom: 20px;
-    }
-
     .content_block {
         font-size: 18px;
     }
@@ -356,13 +340,6 @@ footer {
         color: white;
     }
 
-    .heading {
-        font-weight: bold;
-        font-size: 35px;
-        padding-top: 35px;
-        padding-bottom: 30px;
-    }
-
     .content_block {
         font-size: 20px;
     }
@@ -426,11 +403,5 @@ footer {
     /*Payment*/
     .payment {
         padding: 50px 150px;
-    }
-
-    .example_audio_container {
-        width: 600px;
-        margin-left: auto;
-        margin-right: auto;
     }
 }

@@ -1,0 +1,14 @@
+.item {
+    display: flex;
+}
+
+/*      PC      */
+@media screen and (min-width: 1000px) {
+    .container {
+        width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        flex-direction: column;
+    }
+}

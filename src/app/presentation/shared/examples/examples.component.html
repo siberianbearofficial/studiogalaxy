@@ -1,0 +1,10 @@
+<div class="container">
+    @for (example of EXAMPLE_LIST; track example.id) {
+        <div class="item pd-b-15">
+            <audio preload="metadata" [src]="example.url" controls></audio>
+            <div style="display: flex; justify-content: center; align-items: center" class="pd-l-15">
+                <div class="item__title">{{ example.name }}</div>
+            </div>
+        </div>
+    }
+</div>

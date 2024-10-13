@@ -8,11 +8,12 @@ import { ScreenService } from '../../../core/interactors/screen.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { BehaviorSubject, distinctUntilChanged, Observable, shareReplay } from 'rxjs';
 import { AsyncPipe, NgClass, NgStyle } from '@angular/common';
+import { ExamplesComponent } from '../../shared/examples/examples.component';
 
 @Component({
     selector: 'app-landing-page',
     standalone: true,
-    imports: [PhotoCarouselComponent, AsyncPipe, NgStyle, NgClass],
+    imports: [PhotoCarouselComponent, AsyncPipe, NgStyle, NgClass, ExamplesComponent],
     templateUrl: './landing-page.component.html',
     styleUrl: './landing-page.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
