@@ -1,0 +1,313 @@
+<div
+    class="header header-top"
+    [ngStyle]="{
+        display: (headerHidden$ | async) ? 'none' : 'block',
+    }"
+>
+    <!--    Burger button    -->
+    <div class="header_burger bg-black" (click)="changeNavbarVisibility()">
+        <svg width="32" height="32" viewBox="0 0 32 32">
+            <path
+                fill="#ffffff"
+                d="M5.333 22.667h21.333v-2.667h-21.333v2.667zM5.333 17.333h21.333v-2.667h-21.333v2.667zM5.333 9.333v2.667h21.333v-2.667h-21.333z"
+            ></path>
+        </svg>
+    </div>
+
+    <!--    Menu    -->
+    <div class="header-logo pd-lr-20-pc">
+        <!--    Logo      -->
+        <div class="header-logo" onclick="document.location.href='/'">
+            <img src="img/logo.svg" alt="Логотип студии звукозаписи Галактика" class="header-logo-img" />
+            <div class="header-logo-label">Студия звукозаписи Галактика</div>
+        </div>
+        <!--    Navbar    -->
+        <div
+            class="navbar navbar_position invisible-mobile"
+            [ngClass]="{
+                'invisible-mobile': navbarHidden$ | async,
+            }"
+        >
+            <div class="navbar_link" (click)="onNavbarLinkClick(2)">О НАС</div>
+            <div class="navbar_link" (click)="onNavbarLinkClick(6)">ПРИМЕРЫ РАБОТ</div>
+            <div class="navbar_link" (click)="onNavbarLinkClick(0)">СЕРТИФИКАТЫ</div>
+            <div class="navbar_link" (click)="onNavbarLinkClick(1)">ОПЛАТА</div>
+            <div class="navbar_link" (click)="onNavbarLinkClick(5)">КОНТАКТЫ</div>
+
+            <a class="contacts-link" href="tel:{{ contacts.tel }}">
+                <div class="navbar_tel">{{ contacts.tel }}</div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div
+    id="body"
+    [ngStyle]="{
+        position: (mainScreenLocked$ | async) ? 'fixed' : 'relative',
+    }"
+>
+    <div class="container">
+        <div id="about" class="about">
+            <!--        <div class="about-bg"></div>-->
+            <div class="about_studio_img">
+                <img src="img/studio_pics/about_studio_3.jpg" alt="Фото студии" id="about_studio_img" />
+            </div>
+            <div class="about_studio_text">
+                <div class="heading mc-white"><h2>Немного о нас</h2></div>
+                <div class="content_block mc-light">
+                    Студия звукозаписи Галактика - это созвездие лучших специалистов по записи вокала, звукорежиссеров и
+                    аранжировщиков! Наши специалисты помогут Вам спеть и записать любую песню! С НАМИ ЗАПОЕТ КАЖДЫЙ!<br />
+                    В вашем распоряжении прекрасное оборудование и подготовленные акустические условия!<br />
+                    Звукозаписывающая студия Галактика относится к классу HI END, столь редкому у нас даже в настоящее
+                    время. Оборудование студии удивит даже самого требовательного продюсера.<br /><br />
+                    Мы предлагаем полный спектр услуг по работе со звуком как для профессиональных, так и для начинающих
+                    музыкантов и артистов:<br />
+                    - минус караоке и авторская аранжировка,<br />
+                    - запись голоса и инструментов,<br />
+                    - редакция и сведение записанных партий,<br />
+                    - финальный мастеринг.<br /><br />
+                    Вы получаете готовый продукт «под ключ»!
+                </div>
+            </div>
+        </div>
+        <div class="equipment">
+            <div class="heading mc-white"><h2>Оборудование студии</h2></div>
+            <div class="content_block mc-light">
+                <h3><b>Микрофоны:</b></h3>
+                Neumann U47 / Neumann U87, AKG С12, Telefunken ELA M251
+                <br />
+                <h3><b>АЦП:</b></h3>
+                APOGEE / DNS / PHYRAMIX
+                <br />
+                <h3><b>Преампы:</b></h3>
+                UNIVERSAL AUDIO / MANLEY / NEAVE / SUMMIT
+                <br />
+            </div>
+        </div>
+        <div class="equipment_logo_table pd-tb-40">
+            @for (equipment of EQUIPMENT_LIST; track equipment.name) {
+                <div class="equipment_logo">
+                    <img [src]="equipment.img" [alt]="equipment.name" />
+                </div>
+            }
+        </div>
+    </div>
+
+    <app-photo-carousel></app-photo-carousel>
+
+    <div class="container bg-grey">
+        <!--        <div id="examples" class="examples">-->
+        <!--            <div class="center_text">-->
+        <!--                <div class="heading mc-dark"><h2>Примеры работ</h2></div>-->
+
+        <!--                <div class="content_block pd-15">-->
+        <!--                    &lt;!&ndash;                Audio player                  &ndash;&gt;-->
+        <!--                    <div class="example_audio_container">-->
+        <!--                        <div class="example_audio pd-b-15" style="display: none">-->
+        <!--                            <audio preload="metadata" src="/static/audio/" controls></audio>-->
+        <!--                            <div style="display: flex; justify-content: center; align-items: center" class="pd-l-15">-->
+        <!--                                <div class="example_audio_title">Название трека</div>-->
+        <!--                            </div>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+
+        <div id="certificates" class="certificates">
+            <div class="center_text">
+                <div class="heading mc-dark"><h2>Электронные сертификаты</h2></div>
+
+                <div class="content_block pd-15">
+                    Вы можете заказать сертификат в электронном виде на почту, оплатив картой или наличными перед
+                    записью.
+                    <br />
+                    Мы сделали для Вас цены максимально низкими, а качество максимально высоким!
+                </div>
+            </div>
+            <div class="certificate_cards">
+                @for (certificate of CERTIFICATE_LIST; track certificate.id) {
+                    <div class="certificate_card">
+                        <img [src]="certificate.img" [alt]="certificate.name" class="certificate_card_img" />
+                        <div class="certificate_card_heading mc-slightly-dark">{{ certificate.name }}</div>
+                        <ul class="certificate_card_list">
+                            @for (descriptionPoint of certificate.descriptionPoints; track descriptionPoint) {
+                                <li>{{ descriptionPoint }}</li>
+                            }
+                        </ul>
+                        <div></div>
+                        <div class="certificate_card_price">
+                            <span class="certificate_card_price_value">{{ certificate.price.rubles }}</span> р.
+                            <s class="mc-light-grey"
+                                ><span>{{ certificate.oldPrice.rubles }}</span> р.</s
+                            >
+                        </div>
+                        <div class="btn-dark bg-slightly-dark br-5">Купить</div>
+                        <div class="product_id" style="display: none">0{{ certificate.id }}</div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div id="payment" class="payment">
+            <div class="center_text">
+                <div class="heading mc-dark">
+                    <h2>Оплата</h2>
+                </div>
+            </div>
+            <div class="content_block">
+                <h3><b class="mc-slightly-dark">Наличными во время записи</b></h3>
+                <br />
+                Если в качестве формы оплаты Вы выбрали "Наличными во время записи", после оформления заказа наш
+                менеджер свяжется с Вами для его подтверждения. Сама оплата будет производиться непосредственно на
+                студии.
+                <br /><br />
+                <h3><b class="mc-slightly-dark">Безналичная оплата</b></h3>
+                <br />
+                После оформления заказа наш менеджер свяжется с Вами для его подтверждения, далее — вышлет ссылку на
+                оплату. Сервис оплаты предоставляет "ОАО Робокасса", что дает возможность оплачивать банковскими картами
+                (Visa, Mastercard, МИР и др.), сервисами быстрых платежей, таких как Apple Pay, Google Pay и др.
+                <br />
+                После проведения платежа наш менеджер свяжется с Вами для последующих действий.
+                <br /><br />
+                Конфиденциальность сообщаемой персональной информации при безналичном расчете обеспечивается "ОАО
+                Робокасса".
+            </div>
+        </div>
+
+        <div id="contacts" class="pd-20 bg-grey">
+            <div class="heading mc-dark"><h2>Контактная информация</h2></div>
+            <div class="content_block">
+                <h3>Адрес студии:</h3>
+                <br />
+                Москва, Ленинский проспект, 102с1
+                <br /><br />
+                <a class="contacts-link mc-slightly-dark" href="tel:{{ contacts.tel }}">{{ contacts.tel }}</a>
+                <br />
+                <a class="contacts-link mc-slightly-dark" href="mailto:{{ contacts.email }}">{{ contacts.email }}</a>
+                <br /><br />
+                <h3>Время работы:</h3>
+                <br />
+                Пн-Вс 12:00 — 20:00
+            </div>
+            <div id="map">
+                <iframe
+                    src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=2229181757"
+                    width="100%"
+                    height="320"
+                    frameborder="0"
+                ></iframe>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="pd-l-20">
+            <img src="img/logo.svg" alt="Логотип студии звукозаписи Галактика" id="footer_logo" />
+
+            <div class="social_networks mb-20">
+                <!--        VK        -->
+                <a href="https://vk.com/studio.galaxy" target="_blank">
+                    <div class="social_network bg-slightly-dark">
+                        <svg
+                            enable-background="new 0 0 100 100"
+                            height="20px"
+                            version="1.1"
+                            viewBox="0 0 100 100"
+                            width="20px"
+                            xml:space="preserve"
+                            xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                        >
+                            <g id="color_x5F_fill">
+                                <path
+                                    d="M84.418,69.921c-2.527,1.583-12.807,2.054-15.295,0.246c-1.365-0.991-2.613-2.232-3.799-3.412   c-0.828-0.826-1.77-1.227-2.482-2.123c-0.58-0.734-0.979-1.599-1.592-2.321c-1.033-1.215-2.625-2.248-3.885-0.764   c-1.895,2.231,0.299,6.617-2.229,8.285c-0.848,0.56-1.703,0.722-2.762,0.642l-2.346,0.107c-1.379,0.027-3.562,0.039-5.129-0.244   c-1.75-0.315-3.193-1.271-4.773-1.973c-3.002-1.331-5.863-3.145-8.039-5.658c-5.922-6.843-13.877-16.255-16.967-24.859   c-0.637-1.768-2.314-5.267-0.723-6.784c2.164-1.572,12.789-2.017,14.445,0.416c0.674,0.987,1.098,2.436,1.574,3.555   c0.592,1.396,0.914,2.713,1.84,3.949c0.82,1.097,1.426,2.199,2.061,3.402c0.713,1.349,1.385,2.643,2.252,3.886   c0.588,0.845,2.143,2.524,3.125,2.65c2.398,0.307,2.248-5.521,2.07-6.945c-0.17-1.371-0.215-2.825-0.17-4.216   c0.039-1.186,0.146-2.857-0.557-3.826c-1.145-1.58-3.695-0.397-3.895-2.52c0.422-0.603,0.332-1.138,3.146-2.064   c2.215-0.729,3.646-0.706,5.107-0.589c2.98,0.239,6.139-0.568,9.014,0.398c2.746,0.925,2.322,4.828,2.23,7.168   c-0.123,3.195,0.008,6.312,0,9.553c-0.004,1.477-0.062,2.912,1.736,2.793c1.688-0.113,1.859-1.532,2.664-2.704   c1.121-1.633,2.148-3.288,3.289-4.916c1.537-2.199,2-4.67,3.447-6.923c0.518-0.807,0.963-2.568,1.76-3.205   c0.604-0.481,1.75-0.275,2.48-0.275h2.736c1.33,0.016,2.686,0.035,4.051,0.083c1.967,0.068,4.17-0.359,6.121-0.084   c8.416,1.188-10.578,19.191-9.59,22.403c0.684,2.218,5.016,4.703,6.58,6.521C82.998,61.991,89.389,66.81,84.418,69.921z"
+                                    fill="#ffffff"
+                                ></path>
+                            </g>
+                            <g id="offset_x5F_print_x5F_outline"></g>
+                        </svg>
+                    </div>
+                </a>
+                <div class="pd-5"></div>
+
+                <!--        Instagram        -->
+                <!--       todo remove Instagram since it is blocked in Russia         -->
+                <a href="https://instagram.com/" target="_blank">
+                    <div class="social_network bg-slightly-dark">
+                        <svg
+                            enable-background="new 0 0 1024 1024"
+                            height="10px"
+                            id="Layer_1"
+                            version="1.1"
+                            viewBox="0 0 1024 1024"
+                            width="10px"
+                            xml:space="preserve"
+                            xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                        >
+                            <g>
+                                <g>
+                                    <path
+                                        clip-rule="evenodd"
+                                        d="M512.305,0.122c70.856,0,141.717-0.328,212.571,0.094     c66.662,0.398,129.269,15.6,183.515,56.125c70.84,52.923,107.091,125.214,113.838,212.445c2.376,30.7,1.637,61.667,1.677,92.512     c0.161,119.619,0.072,239.239,0.059,358.86c-0.005,48.856-6.799,96.557-27.473,141.232     c-41.938,90.623-115.091,140.165-211.608,157.334c-20.125,3.579-40.886,4.916-61.359,4.977     c-141.333,0.417-282.669,0.321-424.003,0.174c-73.495-0.075-140.713-19.483-197.994-67.166     c-58.197-48.439-88.907-111.793-98.46-186.071c-1.648-12.811-2.657-25.805-2.669-38.714     C0.261,583.352-0.636,434.771,0.82,286.214c0.796-81.166,27.822-153.13,88.244-209.835     c50.119-47.032,111.04-71.607,178.739-74.012c81.404-2.892,162.991-0.685,244.499-0.685     C512.303,1.161,512.303,0.641,512.305,0.122z M511.505,929.369c68.18,0,136.358,0.274,204.534-0.188     c17.83-0.121,35.919-1.007,53.414-4.171c66.827-12.081,117.634-45.6,144.26-110.67c13.528-33.055,17.946-68.524,18.522-102.876     c2.237-133.271,0.976-266.602,0.819-399.911c-0.018-14.442-0.174-29.045-2.217-43.295     c-9.163-63.988-36.903-116.435-95.792-148.329c-32.869-17.801-68.551-24.522-105.64-24.534     c-142.831-0.042-285.662-0.084-428.492,0.087c-12.908,0.016-25.93,0.73-38.702,2.525     c-72.746,10.214-126.329,46.066-153.145,116.6c-10.822,28.463-14.28,58.288-14.286,88.569     c-0.021,139.403-0.155,278.803,0.183,418.208c0.041,17.055,1.313,34.355,4.366,51.114     c13.543,74.355,55.004,125.461,128.843,146.011c24.606,6.845,50.909,9.868,76.522,10.384     C373.608,930.277,442.565,929.364,511.505,929.369z"
+                                        fill-rule="evenodd"
+                                        fill="#ffffff"
+                                    ></path>
+                                    <path
+                                        clip-rule="evenodd"
+                                        d="M775.903,510.369c-0.064,145.777-119.005,264.347-264.821,263.991     c-145.871-0.353-263.345-118.096-263.43-264.029C247.567,364.56,366.331,245.98,512.255,246.139     C656.921,246.295,775.968,365.605,775.903,510.369z M511.878,679.188c93.007,0.071,169.609-76.475,169.448-169.325     c-0.161-92.206-76.568-168.757-168.818-169.132c-92.873-0.377-169.438,75.935-169.635,169.074     C342.677,603.077,418.542,679.114,511.878,679.188z"
+                                        fill-rule="evenodd"
+                                        fill="#ffffff"
+                                    ></path>
+                                    <path
+                                        clip-rule="evenodd"
+                                        d="M785.693,299.338c-33.019-0.295-59.047-26.717-58.941-59.832     c0.104-33.491,26.785-59.75,60.471-59.52c32.644,0.226,59.246,27.168,59.147,59.904     C846.27,273.09,819.174,299.637,785.693,299.338z"
+                                        fill-rule="evenodd"
+                                        fill="#ffffff"
+                                    ></path>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                </a>
+                <div class="pd-5"></div>
+
+                <!--        TODO: replace Telegram button with OK button as we don't have Telegram channel yet but already have OK group        -->
+
+                <!--        Telegram        -->
+                <a href="https://web.telegram.org/k/" target="_blank">
+                    <div class="social_network bg-slightly-dark">
+                        <svg
+                            version="1.1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="10px"
+                            height="10px"
+                            viewBox="0 0 512 512"
+                            enable-background="new 0 0 512 512"
+                        >
+                            <path
+                                d="M470.4354553,45.4225006L16.8273029,221.2490387c-18.253809,8.1874695-24.4278889,24.5854034-4.4127407,33.4840851l116.3710175,37.1726685l281.3674316-174.789505c15.3625488-10.9733887,31.0910339-8.0470886,17.5573425,4.023468L186.0532227,341.074646l-7.5913849,93.0762329c7.0313721,14.3716125,19.9055786,14.4378967,28.1172485,7.2952881l66.8582916-63.5891418l114.5050659,86.1867065c26.5942688,15.8265076,41.0652466,5.6130371,46.7870789-23.3935242L509.835083,83.1804428C517.6329956,47.474514,504.3345032,31.7425518,470.4354553,45.4225006z"
+                                fill="#ffffff"
+                            ></path>
+                        </svg>
+                    </div>
+                </a>
+            </div>
+
+            <div id="footer_name" class="mc-white">© 2024 Студия звукозаписи Галактика</div>
+        </div>
+        <div class="footer_group">
+            <div class="footer_headings mc-white">СТУДИЯ</div>
+            <div class="footer_text mc-light" (click)="onNavbarLinkClick(2)">О нас</div>
+            <div class="footer_text mc-light" (click)="onNavbarLinkClick(5)">Контактная информация</div>
+        </div>
+        <div class="footer_group">
+            <div class="footer_headings mc-white">УСЛУГИ</div>
+            <div class="footer_text mc-light" (click)="onNavbarLinkClick(6)">Примеры работ</div>
+            <div class="footer_text mc-light" (click)="onNavbarLinkClick(0)">Сертификаты</div>
+            <div class="footer_text mc-light" (click)="onNavbarLinkClick(1)">Оплата</div>
+        </div>
+    </footer>
+</div>
