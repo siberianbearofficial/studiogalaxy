@@ -1,11 +1,13 @@
 @font-face {
     font-family: Opinion Pro Ex Lt;
     src: url('/public/fonts/eot/OpinionProExtended-Light.eot');
-    src: local('Opinion Pro Extended Light'), local('OpinionProExtended-Light'),
-    url('/public/fonts/eot/OpinionProExtended-Light.eot?#iefix') format('embedded-opentype'),
-    url('/public/fonts/woff2/OpinionProExtended-Light.woff2') format('woff2'),
-    url('/public/fonts/woff/OpinionProExtended-Light.woff') format('woff'),
-    url('/public/fonts/ttf/OpinionProExtended-Light.ttf') format('truetype');
+    src:
+        local('Opinion Pro Extended Light'),
+        local('OpinionProExtended-Light'),
+        url('/public/fonts/eot/OpinionProExtended-Light.eot?#iefix') format('embedded-opentype'),
+        url('/public/fonts/woff2/OpinionProExtended-Light.woff2') format('woff2'),
+        url('/public/fonts/woff/OpinionProExtended-Light.woff') format('woff'),
+        url('/public/fonts/ttf/OpinionProExtended-Light.ttf') format('truetype');
     font-weight: 300;
     font-style: normal;
 }
@@ -13,11 +15,13 @@
 @font-face {
     font-family: Opinion Pro Cn Lt;
     src: url('/public/fonts/eot/OpinionProCondensed-LightItalic.eot');
-    src: local('Opinion Pro Condensed LightItalic'), local('OpinionProCondensed-LightItalic'),
-    url('/public/fonts/eot/OpinionProCondensed-LightItalic.eot?#iefix') format('embedded-opentype'),
-    url('/public/fonts/woff2/OpinionProCondensed-LightItalic.woff2') format('woff2'),
-    url('/public/fonts/woff/OpinionProCondensed-LightItalic.woff') format('woff'),
-    url('/public/fonts/ttf/OpinionProCondensed-LightItalic.ttf') format('truetype');
+    src:
+        local('Opinion Pro Condensed LightItalic'),
+        local('OpinionProCondensed-LightItalic'),
+        url('/public/fonts/eot/OpinionProCondensed-LightItalic.eot?#iefix') format('embedded-opentype'),
+        url('/public/fonts/woff2/OpinionProCondensed-LightItalic.woff2') format('woff2'),
+        url('/public/fonts/woff/OpinionProCondensed-LightItalic.woff') format('woff'),
+        url('/public/fonts/ttf/OpinionProCondensed-LightItalic.ttf') format('truetype');
     font-weight: 300;
     font-style: italic;
 }
@@ -25,11 +29,13 @@
 @font-face {
     font-family: Opinion Pro Lt;
     src: url('/public/fonts/eot/OpinionPro-LightItalic.eot');
-    src: local('Opinion Pro Light Italic'), local('OpinionPro-LightItalic'),
-    url('/public/fonts/eot/OpinionPro-LightItalic.eot?#iefix') format('embedded-opentype'),
-    url('/public/fonts/woff2/OpinionPro-LightItalic.woff2') format('woff2'),
-    url('/public/fonts/woff/OpinionPro-LightItalic.woff') format('woff'),
-    url('/public/fonts/ttf/OpinionPro-LightItalic.ttf') format('truetype');
+    src:
+        local('Opinion Pro Light Italic'),
+        local('OpinionPro-LightItalic'),
+        url('/public/fonts/eot/OpinionPro-LightItalic.eot?#iefix') format('embedded-opentype'),
+        url('/public/fonts/woff2/OpinionPro-LightItalic.woff2') format('woff2'),
+        url('/public/fonts/woff/OpinionPro-LightItalic.woff') format('woff'),
+        url('/public/fonts/ttf/OpinionPro-LightItalic.ttf') format('truetype');
     font-weight: 300;
     font-style: italic;
 }
@@ -37,11 +43,13 @@
 @font-face {
     font-family: Opinion Pro ExCn Lt;
     src: url('/public/fonts/eot/OpinionProExtraCondensed-Light.eot');
-    src: local('Opinion Pro ExtraCondensed Light'), local('OpinionProExtraCondensed-Light'),
-    url('/public/fonts/eot/OpinionProExtraCondensed-Light.eot?#iefix') format('embedded-opentype'),
-    url('/public/fonts/woff2/OpinionProExtraCondensed-Light.woff2') format('woff2'),
-    url('/public/fonts/woff/OpinionProExtraCondensed-Light.woff') format('woff'),
-    url('/public/fonts/ttf/OpinionProExtraCondensed-Light.ttf') format('truetype');
+    src:
+        local('Opinion Pro ExtraCondensed Light'),
+        local('OpinionProExtraCondensed-Light'),
+        url('/public/fonts/eot/OpinionProExtraCondensed-Light.eot?#iefix') format('embedded-opentype'),
+        url('/public/fonts/woff2/OpinionProExtraCondensed-Light.woff2') format('woff2'),
+        url('/public/fonts/woff/OpinionProExtraCondensed-Light.woff') format('woff'),
+        url('/public/fonts/ttf/OpinionProExtraCondensed-Light.ttf') format('truetype');
     font-weight: 300;
     font-style: normal;
 }
@@ -49,11 +57,13 @@
 @font-face {
     font-family: Opinion Pro Ex Lt;
     src: url('/public/fonts/eot/OpinionProExtended-LightItalic.eot');
-    src: local('Opinion Pro Extended Light Italic'), local('OpinionProExtended-LightItalic'),
-    url('/public/fonts/eot/OpinionProExtended-LightItalic.eot?#iefix') format('embedded-opentype'),
-    url('/public/fonts/woff2/OpinionProExtended-LightItalic.woff2') format('woff2'),
-    url('/public/fonts/woff/OpinionProExtended-LightItalic.woff') format('woff'),
-    url('/public/fonts/ttf/OpinionProExtended-LightItalic.ttf') format('truetype');
+    src:
+        local('Opinion Pro Extended Light Italic'),
+        local('OpinionProExtended-LightItalic'),
+        url('/public/fonts/eot/OpinionProExtended-LightItalic.eot?#iefix') format('embedded-opentype'),
+        url('/public/fonts/woff2/OpinionProExtended-LightItalic.woff2') format('woff2'),
+        url('/public/fonts/woff/OpinionProExtended-LightItalic.woff') format('woff'),
+        url('/public/fonts/ttf/OpinionProExtended-LightItalic.ttf') format('truetype');
     font-weight: 300;
     font-style: italic;
 }
@@ -61,11 +71,13 @@
 @font-face {
     font-family: Opinion Pro ExCn Lt;
     src: url('/public/fonts/eot/OpinionProExtraCondensed-LightItalic.eot');
-    src: local('Opinion Pro ExtraCondensed Light Italic'), local('OpinionProExtraCondensed-LightItalic'),
-    url('/public/fonts/eot/OpinionProExtraCondensed-LightItalic.eot?#iefix') format('embedded-opentype'),
-    url('/public/fonts/woff2/OpinionProExtraCondensed-LightItalic.woff2') format('woff2'),
-    url('/public/fonts/woff/OpinionProExtraCondensed-LightItalic.woff') format('woff'),
-    url('/public/fonts/ttf/OpinionProExtraCondensed-LightItalic.ttf') format('truetype');
+    src:
+        local('Opinion Pro ExtraCondensed Light Italic'),
+        local('OpinionProExtraCondensed-LightItalic'),
+        url('/public/fonts/eot/OpinionProExtraCondensed-LightItalic.eot?#iefix') format('embedded-opentype'),
+        url('/public/fonts/woff2/OpinionProExtraCondensed-LightItalic.woff2') format('woff2'),
+        url('/public/fonts/woff/OpinionProExtraCondensed-LightItalic.woff') format('woff'),
+        url('/public/fonts/ttf/OpinionProExtraCondensed-LightItalic.ttf') format('truetype');
     font-weight: 300;
     font-style: italic;
 }
@@ -73,11 +85,13 @@
 @font-face {
     font-family: Opinion Pro Lt;
     src: url('/public/fonts/eot/OpinionPro-Light.eot');
-    src: local('Opinion Pro Light'), local('OpinionPro-Light'),
-    url('/public/fonts/eot/OpinionPro-Light.eot?#iefix') format('embedded-opentype'),
-    url('/public/fonts/woff2/OpinionPro-Light.woff2') format('woff2'),
-    url('/public/fonts/woff/OpinionPro-Light.woff') format('woff'),
-    url('/public/fonts/ttf/OpinionPro-Light.ttf') format('truetype');
+    src:
+        local('Opinion Pro Light'),
+        local('OpinionPro-Light'),
+        url('/public/fonts/eot/OpinionPro-Light.eot?#iefix') format('embedded-opentype'),
+        url('/public/fonts/woff2/OpinionPro-Light.woff2') format('woff2'),
+        url('/public/fonts/woff/OpinionPro-Light.woff') format('woff'),
+        url('/public/fonts/ttf/OpinionPro-Light.ttf') format('truetype');
     font-weight: 300;
     font-style: normal;
 }
@@ -85,22 +99,23 @@
 @font-face {
     font-family: Opinion Pro Cn Lt;
     src: url('/public/fonts/eot/OpinionProCondensed-Light.eot');
-    src: local('Opinion Pro Condensed Light'), local('OpinionProCondensed-Light'),
-    url('/public/fonts/eot/OpinionProCondensed-Light.eot?#iefix') format('embedded-opentype'),
-    url('/public/fonts/woff2/OpinionProCondensed-Light.woff2') format('woff2'),
-    url('/public/fonts/woff/OpinionProCondensed-Light.woff') format('woff'),
-    url('/public/fonts/ttf/OpinionProCondensed-Light.ttf') format('truetype');
+    src:
+        local('Opinion Pro Condensed Light'),
+        local('OpinionProCondensed-Light'),
+        url('/public/fonts/eot/OpinionProCondensed-Light.eot?#iefix') format('embedded-opentype'),
+        url('/public/fonts/woff2/OpinionProCondensed-Light.woff2') format('woff2'),
+        url('/public/fonts/woff/OpinionProCondensed-Light.woff') format('woff'),
+        url('/public/fonts/ttf/OpinionProCondensed-Light.ttf') format('truetype');
     font-weight: 300;
     font-style: normal;
 }
 
-
 .ft-cn-lt {
-    font-family: "Opinion Pro Cn Lt", sans-serif, Arial;
+    font-family: 'Opinion Pro Cn Lt', sans-serif, Arial;
 }
 
 .ft-excn-lt {
-    font-family: "Opinion Pro ExCn Lt", sans-serif, Arial;
+    font-family: 'Opinion Pro ExCn Lt', sans-serif, Arial;
 }
 
 .fs-20 {

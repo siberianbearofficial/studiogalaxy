@@ -4,7 +4,7 @@
 body {
     position: relative;
     z-index: 0;
-    background: url("/public/img/background.jpg");
+    background: url('/public/img/background.jpg');
 }
 
 .test-bg {
@@ -38,7 +38,6 @@ body {
     padding-right: 30px;
 }
 
-
 /*    Padding 20px    */
 .pd-20 {
     padding: 20px;
@@ -64,7 +63,6 @@ body {
 .pd-r-20 {
     padding-right: 20px;
 }
-
 
 /*    Padding 15px    */
 .pd-15 {
@@ -92,7 +90,6 @@ body {
     padding-right: 15px;
 }
 
-
 /*  Padding 10px    */
 .pd-10 {
     padding: 10px;
@@ -109,12 +106,10 @@ body {
     padding: 5px;
 }
 
-
 /*  Letter spacing  */
 .ls-1 {
     letter-spacing: 1px;
 }
-
 
 /*  z-index */
 .z-3 {
@@ -124,7 +119,6 @@ body {
 .content_block ul {
     margin-left: 20px;
 }
-
 
 /*  Margin  */
 .mt-40 {
@@ -150,7 +144,6 @@ body {
 .mb-20 {
     margin-bottom: 20px;
 }
-
 
 /*  Header  */
 header {
@@ -210,7 +203,6 @@ header {
     display: flex;
 }
 
-
 /*!* About studio *!*/
 /*.about_studio_img {*/
 /*    !*display: block;*!*/
@@ -238,7 +230,6 @@ header {
 /*    !*color: #ffffff;*!*/
 /*    !*background: url("../img/background.jpg");*!*/
 /*}*/
-
 
 /*!*  Equipment  *!*/
 /*.equipment {*/
@@ -326,7 +317,6 @@ header {
     /*background: url("../img/background.jpg");*/
 }
 
-
 /*  Certificates  */
 .certificates {
     /*padding: 50px 20px 30px;*/
@@ -365,7 +355,7 @@ header {
     margin-top: 20px;
     padding: 20px;
     text-align: center;
-    font-family: "Opinion Pro Lt";
+    font-family: 'Opinion Pro Lt';
     font-weight: bold;
     font-size: 14px;
     border: #00076f 1px;
@@ -403,13 +393,11 @@ header {
     width: 100%;
 }
 
-
 /*Reviews*/
 .reviews {
     padding: 20px;
     background-color: #eeeeee;
 }
-
 
 .yandex_icon {
     width: 40px;
@@ -427,23 +415,22 @@ header {
 }
 
 .review_text {
-    font-family: "Opinion Pro Lt";
+    font-family: 'Opinion Pro Lt';
 }
 
 .reviewer_name {
-    font-family: "Opinion Pro ExCn Lt";
+    font-family: 'Opinion Pro ExCn Lt';
     font-weight: bold;
     font-size: 16px;
     letter-spacing: 1px;
 }
 
 .yandex_info {
-    font-family: "Opinion Pro Cn Lt";
+    font-family: 'Opinion Pro Cn Lt';
     color: #666666;
     margin-top: 10px;
     margin-bottom: 10px;
 }
-
 
 /*Services*/
 .service_card_heading {
@@ -489,7 +476,7 @@ header {
 }
 
 .services_show_all_button {
-    font-family: "Opinion Pro Lt";
+    font-family: 'Opinion Pro Lt';
     font-weight: bold;
     color: #ffffff;
     background-color: #00076f;
@@ -500,12 +487,10 @@ header {
     margin: 30px auto;
 }
 
-
 /*Delivery*/
 .delivery {
     padding: 20px;
 }
-
 
 /*FAQ*/
 .faq {
@@ -513,7 +498,7 @@ header {
 }
 
 .question {
-    font-family: "Opinion Pro Cn Lt";
+    font-family: 'Opinion Pro Cn Lt';
     margin-top: 16px;
 }
 
@@ -547,18 +532,15 @@ header {
     font-size: 14px;
 }
 
-
 /*Contacts*/
 #map {
     margin-top: 40px;
 }
 
-
 .center_text {
     text-align: center;
     width: 100%;
 }
-
 
 /*  Footer  */
 footer {
@@ -641,7 +623,9 @@ footer {
     width: 130px;
 }
 
-.contacts-link, .contacts-link a, .contacts-link a:visited {
+.contacts-link,
+.contacts-link a,
+.contacts-link a:visited {
     text-decoration: none;
 }
 
@@ -687,7 +671,6 @@ footer {
 }
 
 /* } */
-
 
 /*      MOBILE      */
 
@@ -806,10 +789,9 @@ footer {
     }
 }
 
-
 /*      PC      */
 
-@media screen and (min-width: 1000px) /*and (max-width: 1224px)*/ {
+@media screen and (min-width: 1000px) /*and (max-width: 1224px) */ {
     .pd-lr-20-pc {
         padding-left: 20px;
         padding-right: 20px;
@@ -891,7 +873,6 @@ footer {
         z-index: 10;
     }
 
-
     .navbar_tel {
         color: white;
     }
@@ -900,7 +881,6 @@ footer {
     .payment {
         padding: 50px 150px;
     }
-
 
     .example_audio_container {
         width: 600px;

@@ -1,4 +1,4 @@
-@media screen /*and (max-width: 400px)*/ {
+@media screen /*and (max-width: 400px) */ {
     /*    Cart    */
     .cart_button_container {
         width: 80px;
@@ -7,7 +7,7 @@
         position: fixed;
         bottom: 20px;
         right: 20px;
-        background-color: rgba(255, 255, 255, .8);
+        background-color: rgba(255, 255, 255, 0.8);
 
         z-index: 3;
     }
@@ -25,7 +25,7 @@
         text-align: center;
         line-height: 20px;
         color: #ffffff;
-        font-family: "Opinion Pro Cn Lt";
+        font-family: 'Opinion Pro Cn Lt';
         font-weight: bold;
         font-size: 10px;
     }
@@ -44,7 +44,7 @@
         z-index: 4;
         position: absolute;
         background-color: #ffffff;
-        font-family: "Opinion Pro Cn Lt";
+        font-family: 'Opinion Pro Cn Lt';
     }
 
     .cart_overlay_anim_active {
@@ -140,7 +140,6 @@
         font-size: 20px;
     }
 
-
     /*          Cart item         */
     .cart_item_img {
         width: 100px;
@@ -162,7 +161,6 @@
         font-size: 18px;
         font-weight: bold;
     }
-
 
     /*  Order information  */
     .cart_large_text_field {
@@ -228,7 +226,6 @@
         color: #505050;
         font-size: 12px;
     }
-
 
     /* для элемента label связанного с .custom-radio */
     .cart_delivery_method_radio_button + label {

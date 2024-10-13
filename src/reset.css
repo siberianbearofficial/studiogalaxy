@@ -1,12 +1,19 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 
-    font-family: "Opinion Pro Cn Lt", sans-serif;
+    font-family: 'Opinion Pro Cn Lt', sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-size: inherit;
     display: inline;
 }
