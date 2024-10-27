@@ -35,7 +35,7 @@
                                         }
                                     </ul>
                                     <div class="cart_item_price mc-slightly-light pd-t-20">
-                                        <span class="cart_item_price_value">{{ item.data.price }}</span> р.
+                                        <span class="cart_item_price_value">{{ item.data.price | price }}</span>
                                     </div>
                                 </td>
                             </tr>
@@ -64,8 +64,7 @@
                             <table>
                                 <tr>
                                     <td class="service_card_price pd-r-30 mc-slightly-light">
-                                        <span class="service_card_price_value">{{ additionalService.price }}</span>
-                                        р.
+                                        <span class="service_card_price_value">{{ additionalService.price | price }}</span>
                                     </td>
                                     <td
                                         class="service_card_to_cart_button"
@@ -83,7 +82,7 @@
             <div class="cart_overlay_line"></div>
 
             <div class="cart_overlay_subtotal">
-                Сумма: <span class="subtotal_price">{{ totalPrice$ | async }}</span> р.
+                Сумма: <span class="subtotal_price">{{ totalPrice$ | async | price }}</span>
             </div>
 
             <div class="cart_personal_information">
@@ -161,9 +160,9 @@
             </div>
 
             <div class="cart_overlay_summary">
-                Сумма: <span class="subtotal_price">{{ totalPrice$ | async }}</span> р.<br />
+                Сумма: <span class="subtotal_price">{{ totalPrice$ | async | price }}</span><br />
                 <div class="cart_overlay_summary_line cart_overlay_total">
-                    Итоговая сумма: <span class="total_price">{{ totalPrice$ | async }}</span> р.
+                    Итоговая сумма: <span class="total_price">{{ totalPrice$ | async | price }}</span>
                 </div>
             </div>
 

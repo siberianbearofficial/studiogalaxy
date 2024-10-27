@@ -17,7 +17,7 @@
     <!--    Menu    -->
     <div class="header-logo pd-lr-20-pc">
         <!--    Logo      -->
-        <div class="header-logo" onclick="document.location.href='/'">
+        <div class="header-logo" routerLink="/">
             <img src="img/logo.svg" alt="Логотип студии звукозаписи Галактика" class="header-logo-img" />
             <div class="header-logo-label">Студия звукозаписи Галактика</div>
         </div>
@@ -35,7 +35,7 @@
             <div class="navbar_link" (click)="onNavbarLinkClick(5)">КОНТАКТЫ</div>
 
             <a class="contacts-link" href="tel:{{ contacts.tel }}">
-                <div class="navbar_tel">{{ contacts.tel }}</div>
+                <div class="navbar_tel">{{ contacts.tel | tel }}</div>
             </a>
         </div>
     </div>
@@ -135,10 +135,11 @@
                         </ul>
                         <div></div>
                         <div class="certificate_card_price">
-                            <span class="certificate_card_price_value">{{ certificate.price.rubles }}</span> р.
-                            <s class="mc-light-grey"
-                            ><span>{{ certificate.oldPrice.rubles }}</span> р.</s
-                            >
+                            <span class="certificate_card_price_value">
+                                {{ certificate.price | price }}
+                            </span> <s class="mc-light-grey">
+                                {{ certificate.oldPrice | price }}
+                            </s>
                         </div>
                         <div class="btn-dark bg-slightly-dark br-5" (click)="addCertificateToCart(certificate)">
                             Купить
@@ -181,7 +182,7 @@
                 <br />
                 Москва, Ленинский проспект, 102с1
                 <br /><br />
-                <a class="contacts-link mc-slightly-dark" href="tel:{{ contacts.tel }}">{{ contacts.tel }}</a>
+                <a class="contacts-link mc-slightly-dark" href="tel:{{ contacts.tel }}">{{ contacts.tel | tel }}</a>
                 <br />
                 <a class="contacts-link mc-slightly-dark" href="mailto:{{ contacts.email }}">{{ contacts.email }}</a>
                 <br /><br />

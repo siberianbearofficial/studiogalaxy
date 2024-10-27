@@ -11,12 +11,14 @@ import { AsyncPipe, NgClass, NgStyle } from '@angular/common';
 import { ExamplesComponent } from '../../shared/examples/examples.component';
 import { CartService } from '../../../core/interactors/cart.service';
 import { CartButtonComponent } from '../../shared/cart-button/cart-button.component';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { TelPipe } from '../../../infrastructure/pipes/tel.pipe';
+import { PricePipe } from '../../../infrastructure/pipes/price.pipe';
 
 @Component({
     selector: 'app-landing-page',
     standalone: true,
-    imports: [PhotoCarouselComponent, AsyncPipe, NgStyle, NgClass, ExamplesComponent, CartButtonComponent],
+    imports: [PhotoCarouselComponent, AsyncPipe, NgStyle, NgClass, ExamplesComponent, CartButtonComponent, TelPipe, PricePipe, RouterLink],
     templateUrl: './landing-page.component.html',
     styleUrl: './landing-page.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
