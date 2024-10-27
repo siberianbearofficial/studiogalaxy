@@ -1,19 +1,12 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable, of, shareReplay } from 'rxjs';
+import { BehaviorSubject, map, Observable, of, shareReplay, tap } from 'rxjs';
 import { CartItem, CartItemType } from '../domain/entities/cart-item';
 import { Certificate } from '../domain/entities/certificate';
 import { v4 as uuid4 } from 'uuid';
 import { AdditionalService } from '../domain/entities/additional-service';
 import { Price } from '../domain/entities/price';
 import { OrderDetails } from '../domain/entities/order-details';
-
-export const sumPrices = (prices: Price[]): Price => {
-    let sum = 0;
-    prices.map((p) => 100 * p.rubles + p.pennies).forEach((pennies) => (sum += pennies));
-    const rubles = Math.floor(sum / 100);
-    const pennies = sum - 100 * rubles;
-    return { rubles, pennies };
-};
+import { removeCartItemById, sumPrices } from '../../infrastructure/helpers/cart-helpers';
 
 @Injectable({
     providedIn: 'root',
@@ -47,11 +40,12 @@ export class CartService {
     }
 
     removeItem(id: string): void {
-        this.items$$.next(this.items$$.value.filter((i) => i.id !== id));
+        this.items$$.next(removeCartItemById(id, this.items$$.value));
     }
 
     submit(orderDetails: OrderDetails): Observable<void> {
-        console.info('Order details:', orderDetails);
-        return of(void 0);
+        return of(void 0).pipe(
+            tap(() => this.items$$.next([])),
+        );
     }
 }
