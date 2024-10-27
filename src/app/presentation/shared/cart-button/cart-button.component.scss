@@ -1,0 +1,30 @@
+.cart_button_container {
+  width: 80px;
+  height: 80px;
+  border-radius: 50px;
+  background-color: rgba(255, 255, 255, .8);
+  cursor: pointer;
+}
+
+#cart_button {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  background-color: #ee3d48;
+  top: 45px;
+  right: 15px;
+  text-align: center;
+  line-height: 20px;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 10px;
+}
+
+.cart_button_img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  padding: 10px;
+}
