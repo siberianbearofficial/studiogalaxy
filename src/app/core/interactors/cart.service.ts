@@ -22,7 +22,10 @@ export class CartService {
     private readonly items$$: BehaviorSubject<CartItem[]> = new BehaviorSubject<CartItem[]>([]);
     readonly items$: Observable<CartItem[]> = this.items$$.pipe(shareReplay(1));
     readonly totalPrice$: Observable<Price> = this.items$.pipe(
-        map((items: CartItem[]) => sumPrices(items.map((i) => i.data.price))),
+        map(items => sumPrices(items.map((i) => i.data.price))),
+    );
+    readonly totalCount$: Observable<number> = this.items$.pipe(
+        map(items => items.length),
     );
 
     addCertificate(data: Certificate): void {

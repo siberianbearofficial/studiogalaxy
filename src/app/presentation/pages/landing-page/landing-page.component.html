@@ -41,6 +41,12 @@
     </div>
 </div>
 
+@if ((cartTotalCount$ | async) || 0 > 0) {
+    <div class="cart-button-container">
+        <app-cart-button></app-cart-button>
+    </div>
+}
+
 <div
     id="body"
     [ngStyle]="{
@@ -49,7 +55,6 @@
 >
     <div class="container">
         <div id="about" class="about">
-            <!--        <div class="about-bg"></div>-->
             <div class="about_studio_img">
                 <img src="img/studio_pics/about_studio_3.jpg" alt="Фото студии" id="about_studio_img" />
             </div>
@@ -57,7 +62,8 @@
                 <div class="heading mc-white"><h2>Немного о нас</h2></div>
                 <div class="content_block mc-light">
                     Студия звукозаписи Галактика - это созвездие лучших специалистов по записи вокала, звукорежиссеров и
-                    аранжировщиков! Наши специалисты помогут Вам спеть и записать любую песню! С НАМИ ЗАПОЕТ КАЖДЫЙ!<br />
+                    аранжировщиков! Наши специалисты помогут Вам спеть и записать любую песню! С НАМИ ЗАПОЕТ
+                    КАЖДЫЙ!<br />
                     В вашем распоряжении прекрасное оборудование и подготовленные акустические условия!<br />
                     Звукозаписывающая студия Галактика относится к классу HI END, столь редкому у нас даже в настоящее
                     время. Оборудование студии удивит даже самого требовательного продюсера.<br /><br />
@@ -131,11 +137,12 @@
                         <div class="certificate_card_price">
                             <span class="certificate_card_price_value">{{ certificate.price.rubles }}</span> р.
                             <s class="mc-light-grey"
-                                ><span>{{ certificate.oldPrice.rubles }}</span> р.</s
+                            ><span>{{ certificate.oldPrice.rubles }}</span> р.</s
                             >
                         </div>
-                        <div class="btn-dark bg-slightly-dark br-5">Купить</div>
-                        <div class="product_id" style="display: none">0{{ certificate.id }}</div>
+                        <div class="btn-dark bg-slightly-dark br-5" (click)="addCertificateToCart(certificate)">
+                            Купить
+                        </div>
                     </div>
                 }
             </div>

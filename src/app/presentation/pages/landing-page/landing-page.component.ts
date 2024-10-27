@@ -6,21 +6,26 @@ import { CERTIFICATE_LIST } from '../../../infrastructure/constants/certificate-
 import { PhotoCarouselComponent } from '../../shared/photo-carousel/photo-carousel.component';
 import { ScreenService } from '../../../core/interactors/screen.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { BehaviorSubject, distinctUntilChanged, Observable, shareReplay } from 'rxjs';
+import { BehaviorSubject, distinctUntilChanged, from, Observable, shareReplay } from 'rxjs';
 import { AsyncPipe, NgClass, NgStyle } from '@angular/common';
 import { ExamplesComponent } from '../../shared/examples/examples.component';
+import { CartService } from '../../../core/interactors/cart.service';
+import { CartButtonComponent } from '../../shared/cart-button/cart-button.component';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-landing-page',
     standalone: true,
-    imports: [PhotoCarouselComponent, AsyncPipe, NgStyle, NgClass, ExamplesComponent],
+    imports: [PhotoCarouselComponent, AsyncPipe, NgStyle, NgClass, ExamplesComponent, CartButtonComponent],
     templateUrl: './landing-page.component.html',
     styleUrl: './landing-page.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LandingPageComponent implements OnInit {
-    private readonly screenService = inject(ScreenService);
-    private readonly destroyRef = inject(DestroyRef);
+    private readonly screenService: ScreenService = inject(ScreenService);
+    private readonly cartService: CartService = inject(CartService);
+    private readonly router: Router = inject(Router);
+    private readonly destroyRef: DestroyRef = inject(DestroyRef);
 
     protected readonly contacts = {
         tel: '+79951177612', // в UI лучше красиво с пробелами нарисовать, но в ссылку подставлять такой
@@ -69,7 +74,15 @@ export class LandingPageComponent implements OnInit {
         );
     }
 
+    addCertificateToCart(certificate: Certificate): void {
+        this.cartService.addCertificate(certificate);
+        from(this.router.navigateByUrl('/cart')).pipe(
+            takeUntilDestroyed(this.destroyRef),
+        ).subscribe();
+    }
+
     protected readonly EQUIPMENT_LIST: Equipment[] = EQUIPMENT_LIST;
     protected readonly CERTIFICATE_LIST: Certificate[] = CERTIFICATE_LIST;
     protected readonly mainScreenLocked$: Observable<boolean> = this.screenService.mainScreenLocked$;
+    protected readonly cartTotalCount$: Observable<number> = this.cartService.totalCount$;
 }
