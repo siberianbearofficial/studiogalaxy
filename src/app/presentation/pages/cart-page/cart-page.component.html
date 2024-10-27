@@ -1,0 +1,177 @@
+<div class="container">
+    <div id="cart_overlay_header" class="cart_overlay_header bg-dark">
+        <div id="cart_overlay_header_img" routerLink="/">
+            <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <polygon
+                    fill="#ffffff"
+                    points="427.314 107.313 404.686 84.687 256 233.373 107.314 84.687 84.686 107.313 233.373 256 84.686 404.687 107.314 427.313 256 278.627 404.686 427.313 427.314 404.687 278.627 256 427.314 107.313"
+                ></polygon>
+            </svg>
+        </div>
+    </div>
+
+    <div class="pd-20">
+        <div class="cart_overlay_heading mc-dark">Корзина</div>
+
+        <form [formGroup]="form">
+            <div class="cart_overlay_line"></div>
+
+            <div id="cart_overlay_container" class="mt-40 pd-b-20">
+                <div class="cart_item z-3 fs-20 pd-b-15">
+                    <table>
+                        @for (item of items$ | async; track item.id) {
+                            <tr>
+                                <td valign="top">
+                                    <img [src]="item.data.img" [alt]="item.data.name" class="cart_item_img pd-r-15" />
+                                </td>
+                                <td>
+                                    <div class="cart_item_heading mc-slightly-dark">
+                                        {{ item.data.name }}
+                                    </div>
+
+                                    <ul class="cart_item_list_value">
+                                        @for (point of getDescriptionPoints(item); track point) {
+                                            <li>{{ point }}</li>
+                                        }
+                                    </ul>
+                                    <div class="cart_item_price mc-slightly-light pd-t-20">
+                                        <span class="cart_item_price_value">{{ item.data.price }}</span> р.
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+
+            <div class="cart_overlay_line"></div>
+
+            <div class="services">
+                <div class="center_text">
+                    <div class="heading mc-dark">Дополнительные услуги</div>
+                </div>
+
+                <div class="services_grid">
+                    @for (additionalService of ADDITIONAL_SERVICE_LIST; track additionalService.id) {
+                        <div class="service_card pd-10 mt-20">
+                            <div class="service_card_heading mc-slightly-dark">
+                                {{ additionalService.name }}
+                            </div>
+                            <div class="service_card_description">
+                                {{ additionalService.description }}
+                            </div>
+                            <div class="service_card_img">{{ additionalService.img }}</div>
+                            <table>
+                                <tr>
+                                    <td class="service_card_price pd-r-30 mc-slightly-light">
+                                        <span class="service_card_price_value">{{ additionalService.price }}</span>
+                                        р.
+                                    </td>
+                                    <td
+                                        class="service_card_to_cart_button"
+                                        (click)="addAdditionalService(additionalService)"
+                                    >
+                                        В корзину
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="cart_overlay_line"></div>
+
+            <div class="cart_overlay_subtotal">
+                Сумма: <span class="subtotal_price">{{ totalPrice$ | async }}</span> р.
+            </div>
+
+            <div class="cart_personal_information">
+                <div class="cart_large_text_field">
+                    <label for="cart_buyer_name_input" class="label_for_large_input"> Полное имя покупателя </label>
+                    <input
+                        type="text"
+                        placeholder="Иванов Евгений"
+                        required
+                        class="cart_large_input"
+                        id="cart_buyer_name_input"
+                        formControlName="name"
+                    />
+                </div>
+                <div class="cart_large_text_field">
+                    <label for="cart_recipient_name_input" class="label_for_large_input">
+                        Полное имя получателя (необязательно)
+                    </label>
+                    <input
+                        type="text"
+                        placeholder="Иванова Ольга"
+                        class="cart_large_input"
+                        id="cart_recipient_name_input"
+                        formControlName="recipient"
+                    />
+                </div>
+                <div class="cart_large_text_field">
+                    <label for="cart_email_input" class="label_for_large_input"> Email для чека и сертификата </label>
+                    <input
+                        type="email"
+                        required
+                        class="cart_large_input"
+                        id="cart_email_input"
+                        formControlName="email"
+                    />
+                </div>
+                <div class="cart_large_text_field">
+                    <label for="cart_tel_input" class="label_for_large_input">Ваш номер телефона</label>
+                    <input type="tel" required class="cart_large_input" id="cart_tel_input" formControlName="tel" />
+                </div>
+            </div>
+            <div class="cart_large_text_field">
+                <label class="label_for_large_input" for="cart_delivery_promo">Промокод</label>
+                <input type="text" class="cart_large_input" id="cart_delivery_promo" formControlName="promo" />
+            </div>
+            <div class="cart_large_text_field">
+                <label class="label_for_large_input" for="cart_delivery_comment">
+                    Комментарий к заказу, дата и время доставки
+                </label>
+                <input type="text" class="cart_large_input" id="cart_delivery_comment" formControlName="comment" />
+            </div>
+
+            <div class="label_for_large_input mt-40">Способ оплаты</div>
+            <div class="cart_delivery_method_fieldset">
+                <div class="cart_delivery_method_radio">
+                    <input
+                        [value]="PaymentType.Cash"
+                        type="radio"
+                        id="cart_payment_radio_button1"
+                        class="cart_delivery_method_radio_button"
+                        formControlName="paymentType"
+                    />
+                    <label for="cart_payment_radio_button1">Наличными во время записи</label>
+                </div>
+                <div class="cart_delivery_method_radio">
+                    <input
+                        [value]="PaymentType.Cashless"
+                        type="radio"
+                        id="cart_payment_radio_button2"
+                        class="cart_delivery_method_radio_button"
+                        formControlName="paymentType"
+                    />
+                    <label for="cart_payment_radio_button2">Безналичная оплата</label>
+                </div>
+            </div>
+
+            <div class="cart_overlay_summary">
+                Сумма: <span class="subtotal_price">{{ totalPrice$ | async }}</span> р.<br />
+                <div class="cart_overlay_summary_line cart_overlay_total">
+                    Итоговая сумма: <span class="total_price">{{ totalPrice$ | async }}</span> р.
+                </div>
+            </div>
+
+            <input (click)="submit()" class="cart_submit_button bg-slightly-dark mc-white" value="Оформить заказ" />
+        </form>
+        <div class="cart_overlay_footer">
+            После оформления заказа ожидайте звонка менеджера на указанный номер телефона.<br />
+            Мы постараемся ответить как можно скорее.
+        </div>
+    </div>
+</div>
