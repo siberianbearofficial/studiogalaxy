@@ -1,16 +1,18 @@
-import os
+from functools import lru_cache
 
 from dotenv import load_dotenv
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 load_dotenv()
 
-MAIL_SERVER = os.environ.get('MAIL_SERVER')
-MAIL_PORT = os.environ.get('MAIL_PORT')
-MAIL_USE_SSL = True
-MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
-MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
 
-TOKEN = os.environ.get('TOKEN')
-CHAT_IDs = [os.environ.get('MAIN_CHAT_ID')]
+class TelegramBotSettings(BaseSettings):
+    token: str
+    chat_id_list: list[str]
 
-ADMINS = [os.environ.get('ADMIN_EMAIL'), os.environ.get('DEVELOPER_EMAIL')]
+    model_config = SettingsConfigDict(env_prefix="tgbot_")
+
+
+@lru_cache
+def get_telegram_bot_settings() -> TelegramBotSettings:
+    return TelegramBotSettings()

@@ -1,0 +1,265 @@
+/*Services*/
+.services_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-auto-rows: 150px;
+  grid-gap: 30px;
+  padding-bottom: 50px;
+}
+
+.service_card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.service_card_heading {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.service_card_description {
+  font-size: 12px;
+  color: #777777;
+  margin-top: 10px;
+  margin-bottom: 16px;
+}
+
+.service_card_price {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.service_card_img {
+  display: none;
+}
+
+.service_card_to_cart_button {
+  background-color: #9f45b0;
+  font-weight: bold;
+  color: #ffffff;
+  font-size: 16px;
+  padding: 18px;
+  border-radius: 32px;
+  text-align: center;
+  cursor: pointer;
+}
+
+/*Delivery*/
+.delivery {
+  padding: 20px;
+}
+
+.cart_item_list_value {
+  font-size: 16px;
+  padding-left: 20px;
+}
+
+
+.cart_overlay_header {
+  position: fixed;
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: right;
+}
+
+#cart_overlay_header_img {
+  padding: 10px;
+  height: 100%;
+  cursor: pointer;
+  font-size: 40px;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart_overlay_heading {
+  margin-top: 60px;
+  font-weight: bold;
+  font-size: 25px;
+  padding-bottom: 20px;
+}
+
+.cart_overlay_line {
+  /*height: 1px;*/
+  border-top: #525252 1px solid;
+}
+
+.cart_overlay_subtotal {
+  font-weight: bold;
+  text-align: right;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.cart_overlay_subheading {
+  font-weight: bold;
+  padding-top: 50px;
+  font-size: 18px;
+  /*padding-bottom: 20px;*/
+}
+
+.cart_container {
+  padding: 20px;
+}
+
+.cart_overlay_summary {
+  text-align: right;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.cart_overlay_total {
+  font-weight: bold;
+  font-size: 22px;
+  margin-top: 15px;
+}
+
+.cart_overlay_footer {
+  text-align: center;
+  padding: 40px;
+  color: #505050;
+}
+
+.cart_submit_button {
+  border: 0;
+  height: 70px;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/*          Cart item         */
+.cart_item_img {
+  width: 100px;
+  height: 100px;
+  /*padding: 20px;*/
+  /*object-fit: cover;*/
+  object-fit: cover;
+  border-radius: 10px;
+  /*float: left;*/
+}
+
+.cart_item_heading {
+  font-weight: bold;
+  padding-bottom: 10px;
+  font-size: 22px;
+}
+
+.cart_item_price {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/*  Order information  */
+.cart_large_text_field {
+  margin-top: 20px;
+}
+
+.cart_small_text_fields_group {
+  display: table;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.cart_small_text_field_container {
+  display: table-cell;
+  width: 50%;
+}
+
+.cart_small_text_field_left {
+  margin-right: 5px;
+}
+
+.cart_small_text_field_right {
+  margin-left: 5px;
+}
+
+.cart_large_input {
+  padding: 15px;
+  margin-top: 10px;
+  width: 100%;
+  font-size: 18px;
+}
+
+.label_for_large_input {
+  font-size: 18px;
+}
+
+.cart_personal_information {
+  margin-bottom: 20px;
+}
+
+.cart_delivery_method_fieldset {
+  padding-bottom: 20px;
+}
+
+.cart_delivery_method_radio {
+  margin-top: 20px;
+}
+
+.cart_delivery_method_radio_button {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.cart_delivery_clarification {
+  color: #505050;
+  font-size: 12px;
+}
+
+/* для элемента label связанного с .custom-radio */
+.cart_delivery_method_radio_button + label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+}
+
+/* создание в label псевдоэлемента  before со следующими стилями */
+.cart_delivery_method_radio_button + label::before {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 1px solid #00076f;
+  border-radius: 50%;
+  margin-right: 0.5em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
+}
+
+/* стили при наведении курсора на радио */
+.cart_delivery_method_radio_button:not(:disabled):not(:checked) + label:hover::before {
+  border-color: #00076f;
+}
+
+/* стили для активной радиокнопки (при нажатии на неё) */
+.cart_delivery_method_radio_button:not(:disabled):active + label::before {
+  background-color: #eeeeee;
+  border-color: #00076f;
+}
+
+/* стили для радиокнопки, находящейся в фокусе и не находящейся в состоянии checked */
+.cart_delivery_method_radio_button:focus:not(:checked) + label::before {
+  border-color: #00076f;
+}
+
+/* стили для радиокнопки, находящейся в состоянии checked */
+.cart_delivery_method_radio_button:checked + label::before {
+  border-color: #00076f;
+  background-color: #00076f;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+}
+
+/* стили для радиокнопки, находящейся в состоянии disabled */
+.cart_delivery_method_radio_button:disabled + label::before {
+  background-color: #eeeeee;
+}
