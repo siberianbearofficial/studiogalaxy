@@ -4,7 +4,7 @@ import { OrderModel } from '../models/order-model';
 import { Observable } from 'rxjs';
 import { PostOrdersResponseModel } from '../models/response-model';
 
-const API_URL = 'http://localhost:8000/api/v1/orders';
+const API_URL = 'https://studiogalaxy-api.nachert.art/api/v1/orders';
 
 @Injectable({
     providedIn: 'root',

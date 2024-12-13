@@ -1,5 +1,5 @@
 import aiofiles
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from jinja2 import Template
@@ -27,7 +27,7 @@ def calc_total(order: OrderCreate) -> Price:
 
 @app.post("/api/v1/orders", response_model=PostOrdersApiResponse)
 async def create_order(order: OrderCreate):
-    created_at = datetime.now()
+    created_at = datetime.now(tz=timezone(timedelta(hours=3)))
     total = calc_total(order)
 
     async with aiofiles.open("order_notification_template.txt") as f:
