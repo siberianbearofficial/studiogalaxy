@@ -1,6 +1,8 @@
-Pillow
-requests
-flask
-flask-mail
-flask-cors
+aiohttp
+fastapi
+pydantic
+pydantic_settings
 python-dotenv
+uvicorn
+jinja2
+aiofiles

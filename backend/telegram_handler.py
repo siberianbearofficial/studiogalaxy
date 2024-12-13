@@ -1,20 +1,21 @@
-from requests import get
-from decorators import async_dec
-from config import TOKEN, CHAT_IDs
+from urllib.parse import urlencode
+
+import aiohttp
+
+from config import get_telegram_bot_settings
 
 
-@async_dec
-def send_new_order_notification_async(url):
-    get(url)
+async def send(msg: str):
+    async with aiohttp.ClientSession() as session:
+        for chat_id in get_telegram_bot_settings().chat_id_list:
+            await session.get(prepare_url(msg, chat_id))
 
 
-def send_new_order_notification(cart_order):
-    for chat_id in CHAT_IDs:
-        send_new_order_notification_async(prepare_url(cart_order, chat_id))
-        # get(prepare_url(cart_order, chat_id))
+def prepare_url(msg: str, chat_id: str) -> str:
+    bot_token = f"bot{get_telegram_bot_settings().token}"
+    params = {
+        "chat_id": chat_id,
+        "text": msg,
+    }
 
-
-def prepare_url(cart_order, chat_id):
-    base_url = 'https://api.telegram.org/bot{}/sendMessage?chat_id={}&text={}'
-    msg = cart_order.to_text_template()
-    return base_url.format(TOKEN, chat_id, msg)
+    return f"https://api.telegram.org/{bot_token}/sendMessage?{urlencode(params)}"

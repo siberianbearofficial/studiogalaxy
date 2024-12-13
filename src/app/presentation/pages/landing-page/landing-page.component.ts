@@ -30,7 +30,7 @@ export class LandingPageComponent implements OnInit {
     private readonly destroyRef: DestroyRef = inject(DestroyRef);
 
     protected readonly contacts = {
-        tel: '+79951177612', // в UI лучше красиво с пробелами нарисовать, но в ссылку подставлять такой
+        tel: '+79951177612',
         email: 'support@studiogalaxy.ru',
     };
 

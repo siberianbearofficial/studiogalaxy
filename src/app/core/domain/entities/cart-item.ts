@@ -6,8 +6,10 @@ export enum CartItemType {
     AdditionalService = 'additional_service',
 }
 
+export type CartItemData = Certificate | AdditionalService;
+
 export interface CartItem {
     readonly id: string;
     readonly type: CartItemType;
-    readonly data: Certificate | AdditionalService;
+    readonly data: CartItemData;
 }

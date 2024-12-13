@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable, of, shareReplay, tap } from 'rxjs';
+import { inject, Injectable } from '@angular/core';
+import { BehaviorSubject, map, Observable, shareReplay, tap } from 'rxjs';
 import { CartItem, CartItemType } from '../domain/entities/cart-item';
 import { Certificate } from '../domain/entities/certificate';
 import { v4 as uuid4 } from 'uuid';
@@ -7,11 +7,14 @@ import { AdditionalService } from '../domain/entities/additional-service';
 import { Price } from '../domain/entities/price';
 import { OrderDetails } from '../domain/entities/order-details';
 import { removeCartItemById, sumPrices } from '../../infrastructure/helpers/cart-helpers';
+import { CartAdapterService } from '../../infrastructure/adapters/cart-adapter.service';
 
 @Injectable({
     providedIn: 'root',
 })
 export class CartService {
+    private readonly cartAdapter: CartAdapterService = inject(CartAdapterService);
+
     private readonly items$$: BehaviorSubject<CartItem[]> = new BehaviorSubject<CartItem[]>([]);
     readonly items$: Observable<CartItem[]> = this.items$$.pipe(shareReplay(1));
     readonly totalPrice$: Observable<Price> = this.items$.pipe(
@@ -44,7 +47,7 @@ export class CartService {
     }
 
     submit(orderDetails: OrderDetails): Observable<void> {
-        return of(void 0).pipe(
+        return this.cartAdapter.createOrder({ items: this.items$$.value, details: orderDetails }).pipe(
             tap(() => this.items$$.next([])),
         );
     }

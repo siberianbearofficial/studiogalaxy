@@ -1,0 +1,22 @@
+Оформлен заказ от {{ order.created_at_str }}
+
+Информация о заказе:
+
+Имя покупателя: {{ order.details.name }}
+Имя получателя: {{ order.details.recipient }}
+Email: {{ order.details.email }}
+Телефон: {{ order.details.tel }}
+
+Промокод: {{ order.details.promo }}
+
+Комментарий: {{ order.details.comment }}
+Способ оплаты: {{ order.details.payment_type_text }}
+
+Список покупок:
+{% for item in order.items %}
+{{ item.name }} - {{ item.price_str }}
+{% endfor %}
+
+Итог: {{ total_str }}
+
+С уважением, бот StudioGalaxy
