@@ -12,7 +12,8 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:4200",
-        "https://studiogalaxy-api.nachert.art",
+        "https://studiogalaxy.netlify.app",
+        "https://studiogalaxy.ru",
     ],
     allow_headers=["*"],
     allow_methods=["*"],
