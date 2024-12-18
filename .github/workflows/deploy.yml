@@ -1,10 +1,13 @@
-name: Manual Deployment
+name: Deploy on Comment
 
 on:
-  workflow_dispatch: # Allows manual triggering of the workflow
+  issue_comment:
+    types:
+      - created
 
 jobs:
-  manual-deploy:
+  deploy:
+    if: ${{ github.event.comment.body == 'deploy prod' }} # Команда в комментарии
     runs-on: ubuntu-latest
     steps:
       - name: Trigger Deployment Webhook
