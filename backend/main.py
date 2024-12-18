@@ -12,9 +12,9 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:4200",
-        "https://studiogalaxy.netlify.app",
         "https://studiogalaxy.ru",
     ],
+    allow_origin_regex=r"https://.*\.studiogalaxy\.netlify\.app",
     allow_headers=["*"],
     allow_methods=["*"],
     allow_credentials=True,
