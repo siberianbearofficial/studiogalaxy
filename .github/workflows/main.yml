@@ -2,6 +2,8 @@ name: Build API
 
 on:
   push:
+    branches:
+      - master
 
 env:
   REGISTRY: ghcr.io
@@ -40,3 +42,11 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Trigger Deployment Webhook
+        env:
+          ADMIN_LOGIN: ${{ secrets.ADMIN_LOGIN }}
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+        run: |
+          curl -X POST https://deploy-api.nachert.art/api/v1/stacks/studiogalaxy/deployments \
+          --user "$ADMIN_LOGIN:$ADMIN_PASSWORD"
