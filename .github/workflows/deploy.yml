@@ -1,0 +1,16 @@
+name: Manual Deployment
+
+on:
+  workflow_dispatch: # Allows manual triggering of the workflow
+
+jobs:
+  manual-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Deployment Webhook
+        env:
+          ADMIN_LOGIN: ${{ secrets.ADMIN_LOGIN }}
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+        run: |
+          curl -X POST https://deploy-api.nachert.art/api/v1/stacks/studiogalaxy/deployments \
+          --user "$ADMIN_LOGIN:$ADMIN_PASSWORD"
