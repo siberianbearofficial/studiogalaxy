@@ -1,0 +1,14 @@
+*Новая заявка!*
+
+{{ order.created_at_str }}
+
+Имя: {{ order.details.name }}
+Email: {{ order.details.email }}
+Телефон: {{ order.details.tel }}
+{% if order.details.promo %}Промокод: {{ order.details.promo }}{% endif %}
+{% if order.details.comment %}Комментарий: {{ order.details.comment }}{% endif %}
+
+Интересующие услуги:
+{% for item in order.items %}- {{ item.name }}{% endfor %}
+
+С уважением, бот StudioGalaxy

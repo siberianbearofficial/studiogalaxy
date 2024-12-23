@@ -16,6 +16,7 @@ def prepare_url(msg: str, chat_id: str) -> str:
     params = {
         "chat_id": chat_id,
         "text": msg,
+        "parse_mode": "Markdown",
     }
 
     return f"https://api.telegram.org/{bot_token}/sendMessage?{urlencode(params)}"
