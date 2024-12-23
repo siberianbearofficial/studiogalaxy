@@ -51,16 +51,20 @@ export class CartPageComponent {
     }
 
     protected submit(): void {
-        this.cartService
-            .submit(this.form.value)
-            .pipe(
-                switchMap(() => {
-                    alert('Заявка оформлена! Ожидайте звонка менеджера на указанный номер телефона.');
-                    return from(this.router.navigateByUrl('/'));
-                }),
-                takeUntilDestroyed(this.destroyRef),
-            )
-            .subscribe();
+        if (this.form.value.name.length > 0 && this.form.value.email.length > 0 && this.form.value.tel.length > 0) {
+            this.cartService
+                .submit(this.form.value)
+                .pipe(
+                    switchMap(() => {
+                        alert('Заявка оформлена! Ожидайте звонка менеджера на указанный номер телефона.');
+                        return from(this.router.navigateByUrl('/'));
+                    }),
+                    takeUntilDestroyed(this.destroyRef),
+                )
+                .subscribe();
+        } else {
+            alert('Сначала заполните обязательные поля: имя, email и телефон');
+        }
     }
 
     protected readonly ADDITIONAL_SERVICE_LIST: AdditionalService[] = ADDITIONAL_SERVICE_LIST;
