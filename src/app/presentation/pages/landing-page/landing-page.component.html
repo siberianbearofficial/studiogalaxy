@@ -30,7 +30,7 @@
         >
             <div class="navbar_link" (click)="onNavbarLinkClick(2)">О НАС</div>
             <div class="navbar_link" (click)="onNavbarLinkClick(6)">ПРИМЕРЫ РАБОТ</div>
-            <div class="navbar_link" (click)="onNavbarLinkClick(0)">СЕРТИФИКАТЫ</div>
+            <div class="navbar_link" (click)="onNavbarLinkClick(0)">УСЛУГИ</div>
             <div class="navbar_link" (click)="onNavbarLinkClick(1)">ОПЛАТА</div>
             <div class="navbar_link" (click)="onNavbarLinkClick(5)">КОНТАКТЫ</div>
 
@@ -173,8 +173,6 @@
                 Москва, Ленинский проспект, 102с1
                 <br /><br />
                 <a class="contacts-link mc-slightly-dark" href="tel:{{ contacts.tel }}">{{ contacts.tel | tel }}</a>
-                <br />
-                <a class="contacts-link mc-slightly-dark" href="mailto:{{ contacts.email }}">{{ contacts.email }}</a>
                 <br /><br />
                 <h3>Время работы:</h3>
                 <br />
@@ -218,28 +216,6 @@
                         </svg>
                     </div>
                 </a>
-                <div class="pd-5"></div>
-
-                <!--        TODO: replace Telegram button with OK button as we don't have Telegram channel yet but already have OK group        -->
-
-                <!--        Telegram        -->
-                <a href="https://web.telegram.org/k/" target="_blank">
-                    <div class="social_network bg-slightly-dark">
-                        <svg
-                            version="1.1"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="10px"
-                            height="10px"
-                            viewBox="0 0 512 512"
-                            enable-background="new 0 0 512 512"
-                        >
-                            <path
-                                d="M470.4354553,45.4225006L16.8273029,221.2490387c-18.253809,8.1874695-24.4278889,24.5854034-4.4127407,33.4840851l116.3710175,37.1726685l281.3674316-174.789505c15.3625488-10.9733887,31.0910339-8.0470886,17.5573425,4.023468L186.0532227,341.074646l-7.5913849,93.0762329c7.0313721,14.3716125,19.9055786,14.4378967,28.1172485,7.2952881l66.8582916-63.5891418l114.5050659,86.1867065c26.5942688,15.8265076,41.0652466,5.6130371,46.7870789-23.3935242L509.835083,83.1804428C517.6329956,47.474514,504.3345032,31.7425518,470.4354553,45.4225006z"
-                                fill="#ffffff"
-                            ></path>
-                        </svg>
-                    </div>
-                </a>
             </div>
 
             <div id="footer_name" class="mc-white">© 2024 Студия звукозаписи Галактика</div>
@@ -252,7 +228,7 @@
         <div class="footer_group">
             <div class="footer_headings mc-white">УСЛУГИ</div>
             <div class="footer_text mc-light" (click)="onNavbarLinkClick(6)">Примеры работ</div>
-            <div class="footer_text mc-light" (click)="onNavbarLinkClick(0)">Сертификаты</div>
+            <div class="footer_text mc-light" (click)="onNavbarLinkClick(0)">Услуги</div>
             <div class="footer_text mc-light" (click)="onNavbarLinkClick(1)">Оплата</div>
         </div>
     </footer>
