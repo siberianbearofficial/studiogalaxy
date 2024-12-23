@@ -39,7 +39,6 @@ export const CERTIFICATE_LIST: Certificate[] = [
         oldPrice: { rubles: 24000, pennies: 0 },
         descriptionPoints: [
             'Запись 3-х (и более участников) на готовый минус (студия предоставляет минус)',
-            'Стоимость рассчитывается из количества участников: за каждого дополнительного + 5 000 рублей',
             'Аренда студии',
             'Тюнинг и монтаж вокала',
             'Сведение и мастеринг',
@@ -49,7 +48,7 @@ export const CERTIFICATE_LIST: Certificate[] = [
     },
     {
         id: '4',
-        name: 'Сертификат "Альбом"',
+        name: 'Альбом',
         img: 'img/certificates/album.jpg',
         price: { rubles: 89900, pennies: 0 },
         oldPrice: { rubles: 108000, pennies: 0 },
@@ -64,7 +63,7 @@ export const CERTIFICATE_LIST: Certificate[] = [
     },
     {
         id: '5',
-        name: 'Сертификат "Три хита"',
+        name: 'EP "Три хита"',
         img: 'img/certificates/three_hits.jpg',
         price: { rubles: 27900, pennies: 0 },
         oldPrice: { rubles: 33000, pennies: 0 },

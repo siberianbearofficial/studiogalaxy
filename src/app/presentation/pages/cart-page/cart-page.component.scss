@@ -263,3 +263,7 @@
 .cart_delivery_method_radio_button:disabled + label::before {
   background-color: #eeeeee;
 }
+
+.cart__submit {
+  margin-top: 20px;
+}

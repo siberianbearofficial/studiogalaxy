@@ -8,15 +8,12 @@ import { from, Observable, switchMap } from 'rxjs';
 import { CartItem, CartItemType } from '../../../core/domain/entities/cart-item';
 import { AsyncPipe } from '@angular/common';
 import { Certificate } from '../../../core/domain/entities/certificate';
-import { Price } from '../../../core/domain/entities/price';
-import { PaymentType } from '../../../core/domain/entities/order-details';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { PricePipe } from '../../../infrastructure/pipes/price.pipe';
 
 @Component({
     selector: 'app-cart-page',
     standalone: true,
-    imports: [RouterLink, ReactiveFormsModule, AsyncPipe, PricePipe],
+    imports: [RouterLink, ReactiveFormsModule, AsyncPipe],
     templateUrl: './cart-page.component.html',
     styleUrl: './cart-page.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -29,12 +26,10 @@ export class CartPageComponent {
 
     protected readonly form: FormGroup = this.formBuilder.group({
         name: ['', Validators.required],
-        recipient: '',
         email: ['', Validators.required],
         tel: ['', Validators.required],
         promo: '',
         comment: '',
-        paymentType: PaymentType.Cashless,
     });
 
     protected getDescriptionPoints(item: CartItem): string[] {
@@ -56,20 +51,22 @@ export class CartPageComponent {
     }
 
     protected submit(): void {
-        this.cartService
-            .submit(this.form.value)
-            .pipe(
-                switchMap(() => {
-                    alert('Заказ оформлен! Ожидайте звонка менеджера на указанный номер телефона.');
-                    return from(this.router.navigateByUrl('/'));
-                }),
-                takeUntilDestroyed(this.destroyRef),
-            )
-            .subscribe();
+        if (this.form.value.name.length > 0 && this.form.value.email.length > 0 && this.form.value.tel.length > 0) {
+            this.cartService
+                .submit(this.form.value)
+                .pipe(
+                    switchMap(() => {
+                        alert('Заявка оформлена! Ожидайте звонка менеджера на указанный номер телефона.');
+                        return from(this.router.navigateByUrl('/'));
+                    }),
+                    takeUntilDestroyed(this.destroyRef),
+                )
+                .subscribe();
+        } else {
+            alert('Сначала заполните обязательные поля: имя, email и телефон');
+        }
     }
 
     protected readonly ADDITIONAL_SERVICE_LIST: AdditionalService[] = ADDITIONAL_SERVICE_LIST;
     protected readonly items$: Observable<CartItem[]> = this.cartService.items$;
-    protected readonly totalPrice$: Observable<Price> = this.cartService.totalPrice$;
-    protected readonly PaymentType = PaymentType;
 }
