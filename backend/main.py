@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from jinja2 import Template
 
 import telegram_handler
-from schema import OrderCreate, PostOrdersApiResponse, Price
+from schema import OrderCreate, PostOrdersApiResponse, Price, OrderCreateV2
 
 app = FastAPI()
 app.add_middleware(
@@ -36,6 +36,21 @@ async def create_order(order: OrderCreate):
 
     template = Template(template_txt, enable_async=True)
     msg = await template.render_async(order=order.for_template(created_at, total))
+
+    await telegram_handler.send(msg)
+
+    return PostOrdersApiResponse()
+
+
+@app.post("/api/v2/orders", response_model=PostOrdersApiResponse)
+async def create_order_v2(order: OrderCreateV2):
+    created_at = datetime.now(tz=timezone(timedelta(hours=3)))
+
+    async with aiofiles.open("order_notification_v2_template.txt") as f:
+        template_txt = await f.read()
+
+    template = Template(template_txt, enable_async=True)
+    msg = await template.render_async(order=order.for_template(created_at))
 
     await telegram_handler.send(msg)
 

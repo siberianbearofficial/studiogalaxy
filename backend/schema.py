@@ -71,21 +71,21 @@ def payment_type_to_text(payment_type: PaymentType) -> str:
 
 class OrderDetailsForTemplate(BaseModel):
     name: str
-    recipient: Optional[str]
+    recipient: Optional[str] = None
     email: str
     tel: str
-    promo: Optional[str]
-    comment: Optional[str]
+    promo: Optional[str] = None
+    comment: Optional[str] = None
     payment_type_text: str
 
 
 class OrderDetails(BaseModel):
     name: str
-    recipient: Optional[str]
+    recipient: Optional[str] = None
     email: str
     tel: str
-    promo: Optional[str]
-    comment: Optional[str]
+    promo: Optional[str] = None
+    comment: Optional[str] = None
     payment_type: PaymentType
 
     def for_template(self) -> OrderDetailsForTemplate:
@@ -98,6 +98,14 @@ class OrderDetails(BaseModel):
             comment=self.comment,
             payment_type_text=payment_type_to_text(self.payment_type),
         )
+
+
+class OrderDetailsV2(BaseModel):
+    name: str
+    email: str
+    tel: str
+    promo: Optional[str] = None
+    comment: Optional[str] = None
 
 
 class OrderCreateForTemplate(BaseModel):
@@ -117,6 +125,24 @@ class OrderCreate(BaseModel):
             total_str=f"{total.rubles:02}.{total.pennies:02} р.",
             items=list(map(lambda item: item.for_template(), self.items)),
             details=self.details.for_template(),
+        )
+
+
+class OrderCreateV2ForTemplate(BaseModel):
+    created_at_str: str
+    items: list[CartItemForTemplate]
+    details: OrderDetailsV2
+
+
+class OrderCreateV2(BaseModel):
+    items: list[CartItem]
+    details: OrderDetailsV2
+
+    def for_template(self, created_at: datetime) -> OrderCreateV2ForTemplate:
+        return OrderCreateV2ForTemplate(
+            created_at_str=created_at.strftime("%d %B %Y %H:%M:%S"),
+            items=list(map(lambda item: item.for_template(), self.items)),
+            details=self.details,
         )
 
 
