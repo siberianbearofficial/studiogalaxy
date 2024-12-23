@@ -34,9 +34,6 @@
                                             <li>{{ point }}</li>
                                         }
                                     </ul>
-                                    <div class="cart_item_price mc-slightly-light pd-t-20">
-                                        <span class="cart_item_price_value">{{ item.data.price | price }}</span>
-                                    </div>
                                 </td>
                             </tr>
                         }
@@ -63,9 +60,6 @@
                             <div class="service_card_img">{{ additionalService.img }}</div>
                             <table>
                                 <tr>
-                                    <td class="service_card_price pd-r-30 mc-slightly-light">
-                                        <span class="service_card_price_value">{{ additionalService.price | price }}</span>
-                                    </td>
                                     <td
                                         class="service_card_to_cart_button"
                                         (click)="addAdditionalService(additionalService)"
@@ -81,13 +75,9 @@
 
             <div class="cart_overlay_line"></div>
 
-            <div class="cart_overlay_subtotal">
-                Сумма: <span class="subtotal_price">{{ totalPrice$ | async | price }}</span>
-            </div>
-
             <div class="cart_personal_information">
                 <div class="cart_large_text_field">
-                    <label for="cart_buyer_name_input" class="label_for_large_input"> Полное имя покупателя </label>
+                    <label for="cart_buyer_name_input" class="label_for_large_input">Ваше имя</label>
                     <input
                         type="text"
                         placeholder="Иванов Евгений"
@@ -98,19 +88,7 @@
                     />
                 </div>
                 <div class="cart_large_text_field">
-                    <label for="cart_recipient_name_input" class="label_for_large_input">
-                        Полное имя получателя (необязательно)
-                    </label>
-                    <input
-                        type="text"
-                        placeholder="Иванова Ольга"
-                        class="cart_large_input"
-                        id="cart_recipient_name_input"
-                        formControlName="recipient"
-                    />
-                </div>
-                <div class="cart_large_text_field">
-                    <label for="cart_email_input" class="label_for_large_input"> Email для чека и сертификата </label>
+                    <label for="cart_email_input" class="label_for_large_input">Email для чека</label>
                     <input
                         type="email"
                         required
@@ -130,46 +108,18 @@
             </div>
             <div class="cart_large_text_field">
                 <label class="label_for_large_input" for="cart_delivery_comment">
-                    Комментарий к заказу, дата и время доставки
+                    Комментарий к заказу
                 </label>
                 <input type="text" class="cart_large_input" id="cart_delivery_comment" formControlName="comment" />
             </div>
 
-            <div class="label_for_large_input mt-40">Способ оплаты</div>
-            <div class="cart_delivery_method_fieldset">
-                <div class="cart_delivery_method_radio">
-                    <input
-                        [value]="PaymentType.Cash"
-                        type="radio"
-                        id="cart_payment_radio_button1"
-                        class="cart_delivery_method_radio_button"
-                        formControlName="paymentType"
-                    />
-                    <label for="cart_payment_radio_button1">Наличными во время записи</label>
-                </div>
-                <div class="cart_delivery_method_radio">
-                    <input
-                        [value]="PaymentType.Cashless"
-                        type="radio"
-                        id="cart_payment_radio_button2"
-                        class="cart_delivery_method_radio_button"
-                        formControlName="paymentType"
-                    />
-                    <label for="cart_payment_radio_button2">Безналичная оплата</label>
-                </div>
+            <div class="cart__submit">
+                <input (click)="submit()" class="cart_submit_button bg-slightly-dark mc-white"
+                       value="Оставить заявку" />
             </div>
-
-            <div class="cart_overlay_summary">
-                Сумма: <span class="subtotal_price">{{ totalPrice$ | async | price }}</span><br />
-                <div class="cart_overlay_summary_line cart_overlay_total">
-                    Итоговая сумма: <span class="total_price">{{ totalPrice$ | async | price }}</span>
-                </div>
-            </div>
-
-            <input (click)="submit()" class="cart_submit_button bg-slightly-dark mc-white" value="Оформить заказ" />
         </form>
         <div class="cart_overlay_footer">
-            После оформления заказа ожидайте звонка менеджера на указанный номер телефона.<br />
+            После оформления заявки ожидайте звонка менеджера на указанный номер телефона.<br />
             Мы постараемся ответить как можно скорее.
         </div>
     </div>

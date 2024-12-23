@@ -17,7 +17,7 @@ export const ADDITIONAL_SERVICE_LIST: AdditionalService[] = [
     },
     {
         id: '2',
-        name: 'Доплата за участника в съемке видеоклипа',
+        name: 'Дополнительный участник в съемке видеоклипа',
         description: 'Для неучаствующих в записи.',
         price: { rubles: 3000, pennies: 0 },
         img: 'img/additionalServices/test.png',

@@ -8,8 +8,6 @@ import { from, Observable, switchMap } from 'rxjs';
 import { CartItem, CartItemType } from '../../../core/domain/entities/cart-item';
 import { AsyncPipe } from '@angular/common';
 import { Certificate } from '../../../core/domain/entities/certificate';
-import { Price } from '../../../core/domain/entities/price';
-import { PaymentType } from '../../../core/domain/entities/order-details';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { PricePipe } from '../../../infrastructure/pipes/price.pipe';
 
@@ -29,12 +27,10 @@ export class CartPageComponent {
 
     protected readonly form: FormGroup = this.formBuilder.group({
         name: ['', Validators.required],
-        recipient: '',
         email: ['', Validators.required],
         tel: ['', Validators.required],
         promo: '',
         comment: '',
-        paymentType: PaymentType.Cashless,
     });
 
     protected getDescriptionPoints(item: CartItem): string[] {
@@ -60,7 +56,7 @@ export class CartPageComponent {
             .submit(this.form.value)
             .pipe(
                 switchMap(() => {
-                    alert('Заказ оформлен! Ожидайте звонка менеджера на указанный номер телефона.');
+                    alert('Заявка оформлена! Ожидайте звонка менеджера на указанный номер телефона.');
                     return from(this.router.navigateByUrl('/'));
                 }),
                 takeUntilDestroyed(this.destroyRef),
@@ -70,6 +66,4 @@ export class CartPageComponent {
 
     protected readonly ADDITIONAL_SERVICE_LIST: AdditionalService[] = ADDITIONAL_SERVICE_LIST;
     protected readonly items$: Observable<CartItem[]> = this.cartService.items$;
-    protected readonly totalPrice$: Observable<Price> = this.cartService.totalPrice$;
-    protected readonly PaymentType = PaymentType;
 }
