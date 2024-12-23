@@ -48,7 +48,7 @@ export const CERTIFICATE_LIST: Certificate[] = [
     },
     {
         id: '4',
-        name: 'Сертификат "Альбом"',
+        name: 'Альбом',
         img: 'img/certificates/album.jpg',
         price: { rubles: 89900, pennies: 0 },
         oldPrice: { rubles: 108000, pennies: 0 },
@@ -63,7 +63,7 @@ export const CERTIFICATE_LIST: Certificate[] = [
     },
     {
         id: '5',
-        name: 'Сертификат "Три хита"',
+        name: 'EP "Три хита"',
         img: 'img/certificates/three_hits.jpg',
         price: { rubles: 27900, pennies: 0 },
         oldPrice: { rubles: 33000, pennies: 0 },
