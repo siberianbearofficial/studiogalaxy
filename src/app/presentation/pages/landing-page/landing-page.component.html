@@ -114,13 +114,10 @@
 
         <div id="certificates" class="certificates">
             <div class="center_text">
-                <div class="heading mc-dark"><h2>Электронные сертификаты</h2></div>
+                <div class="heading mc-dark"><h2>Наши услуги</h2></div>
 
                 <div class="content_block pd-15">
-                    Вы можете заказать сертификат в электронном виде на почту, оплатив картой или наличными перед
-                    записью.
-                    <br />
-                    Мы сделали для Вас цены максимально низкими, а качество максимально высоким!
+                    Вы можете у нас записать
                 </div>
             </div>
             <div class="certificate_cards">
@@ -134,15 +131,8 @@
                             }
                         </ul>
                         <div></div>
-                        <div class="certificate_card_price">
-                            <span class="certificate_card_price_value">
-                                {{ certificate.price | price }}
-                            </span> <s class="mc-light-grey">
-                                {{ certificate.oldPrice | price }}
-                            </s>
-                        </div>
                         <div class="btn-dark bg-slightly-dark br-5" (click)="addCertificateToCart(certificate)">
-                            Купить
+                            Запишите с нами
                         </div>
                     </div>
                 }

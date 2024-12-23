@@ -9,12 +9,11 @@ import { CartItem, CartItemType } from '../../../core/domain/entities/cart-item'
 import { AsyncPipe } from '@angular/common';
 import { Certificate } from '../../../core/domain/entities/certificate';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { PricePipe } from '../../../infrastructure/pipes/price.pipe';
 
 @Component({
     selector: 'app-cart-page',
     standalone: true,
-    imports: [RouterLink, ReactiveFormsModule, AsyncPipe, PricePipe],
+    imports: [RouterLink, ReactiveFormsModule, AsyncPipe],
     templateUrl: './cart-page.component.html',
     styleUrl: './cart-page.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
