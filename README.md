@@ -1,27 +1,79 @@
-# StudioGalaxy
+<p align="center">
+  <img src="https://studiogalaxy.ru/img/logo.svg" alt="Studio Galaxy Logo" height="120">
+</p>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.8.
+<h1 align="center">Studio Galaxy</h1>
 
-## Development server
+<p align="center">
+  🎶 High-end студия звукозаписи "Галактика" | Лендинг и API для обработки заказов через Telegram
+</p>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+---
 
-## Code scaffolding
+## О проекте
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+**Studio Galaxy** — это лендинг для студии звукозаписи «Галактика», реализованный на Angular с backend-частью на FastAPI.
+Сайт предоставляет посетителям информацию об услугах студии и позволяет отправить заявку, чтобы записаться и/или проконсультироваться с менеджером.
 
-## Build
+Цель проекта — обеспечить простой и интуитивный интерфейс для коммуникации между клиентами и звукозаписывающей студией.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+---
 
-## Running unit tests
+## Стек
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Frontend:
+- **Angular** 18.2.8
+- SCSS / HTML
+- Адаптивная верстка
 
-## Running end-to-end tests
+### Backend:
+- **FastAPI**
+- Telegram Bot API и jinja2 для оформления заказов
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+---
 
-## Further help
+## Основная структура
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```
+studio-galaxy/
+├── src                      # Angular-приложение
+├── backend                  # FastAPI-приложение
+└── README.md
+```
+
+---
+
+## Локальный запуск
+
+### Frontend
+
+```bash
+npm install
+ng serve
+```
+
+По умолчанию приложение доступно на: [http://localhost:4200](http://localhost:4200)
+
+### Backend
+
+```bash
+cd backend
+pip install -r requirements.txt
+uvicorn main:app --reload
+```
+
+---
+
+## Линтеры / форматтеры
+
+```bash
+npm run format
+```
+
+---
+
+## 🌐 Деплоймент
+
+Основной сайт доступен по адресу: [https://studiogalaxy.ru](https://studiogalaxy.ru)
+
+Также есть демо-стенды фронтенда на [Netlify](https://studiogalaxy.netlify.app) (все урлы кроме основного создаются динамически во время работы над PR)
