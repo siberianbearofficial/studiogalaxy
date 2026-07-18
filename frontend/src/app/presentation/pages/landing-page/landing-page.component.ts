@@ -42,6 +42,8 @@ export class LandingPageComponent implements OnInit {
         email: 'support@studiogalaxy.ru',
     };
 
+    protected readonly currentYear: number = new Date().getFullYear();
+
     ngOnInit(): void {
         this.screenService.init().pipe(takeUntilDestroyed(this.destroyRef)).subscribe();
     }

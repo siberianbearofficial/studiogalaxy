@@ -31,7 +31,6 @@
             <div class="navbar_link" (click)="onNavbarLinkClick(2)">О НАС</div>
             <div class="navbar_link" (click)="onNavbarLinkClick(6)">ПРИМЕРЫ РАБОТ</div>
             <div class="navbar_link" (click)="onNavbarLinkClick(0)">УСЛУГИ</div>
-            <div class="navbar_link" (click)="onNavbarLinkClick(1)">ОПЛАТА</div>
             <div class="navbar_link" (click)="onNavbarLinkClick(5)">КОНТАКТЫ</div>
 
             <a class="contacts-link" href="tel:{{ contacts.tel }}">
@@ -139,32 +138,6 @@
             </div>
         </div>
 
-        <div id="payment" class="payment">
-            <div class="center_text">
-                <div class="heading mc-dark">
-                    <h2>Оплата</h2>
-                </div>
-            </div>
-            <div class="content_block">
-                <h3><b class="mc-slightly-dark">Наличными во время записи</b></h3>
-                <br />
-                Если в качестве формы оплаты Вы выбрали "Наличными во время записи", после оформления заказа наш
-                менеджер свяжется с Вами для его подтверждения. Сама оплата будет производиться непосредственно на
-                студии.
-                <br /><br />
-                <h3><b class="mc-slightly-dark">Безналичная оплата</b></h3>
-                <br />
-                После оформления заказа наш менеджер свяжется с Вами для его подтверждения, далее — вышлет ссылку на
-                оплату. Сервис оплаты предоставляет "ОАО Робокасса", что дает возможность оплачивать банковскими картами
-                (Visa, Mastercard, МИР и др.), сервисами быстрых платежей, таких как Apple Pay, Google Pay и др.
-                <br />
-                После проведения платежа наш менеджер свяжется с Вами для последующих действий.
-                <br /><br />
-                Конфиденциальность сообщаемой персональной информации при безналичном расчете обеспечивается "ОАО
-                Робокасса".
-            </div>
-        </div>
-
         <div id="contacts" class="pd-20 bg-grey">
             <div class="heading mc-dark"><h2>Контактная информация</h2></div>
             <div class="content_block">
@@ -218,7 +191,7 @@
                 </a>
             </div>
 
-            <div id="footer_name" class="mc-white">© 2024 Студия звукозаписи Галактика</div>
+            <div id="footer_name" class="mc-white">© {{ currentYear }} Студия звукозаписи Галактика</div>
         </div>
         <div class="footer_group">
             <div class="footer_headings mc-white">СТУДИЯ</div>
@@ -229,7 +202,6 @@
             <div class="footer_headings mc-white">УСЛУГИ</div>
             <div class="footer_text mc-light" (click)="onNavbarLinkClick(6)">Примеры работ</div>
             <div class="footer_text mc-light" (click)="onNavbarLinkClick(0)">Наши услуги</div>
-            <div class="footer_text mc-light" (click)="onNavbarLinkClick(1)">Оплата</div>
         </div>
     </footer>
 </div>

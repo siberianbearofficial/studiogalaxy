@@ -3,7 +3,7 @@ import { Certificate } from '../../core/domain/entities/certificate';
 export const CERTIFICATE_LIST: Certificate[] = [
     {
         id: '1',
-        name: 'Соло "Звезда КАРАОКЕ"',
+        name: 'Соло',
         img: 'img/certificates/karaoke_star.jpg',
         price: { rubles: 9900, pennies: 0 },
         oldPrice: { rubles: 12000, pennies: 0 },
@@ -18,7 +18,7 @@ export const CERTIFICATE_LIST: Certificate[] = [
     },
     {
         id: '2',
-        name: 'Дуэт "Две звезды"',
+        name: 'Дуэт',
         img: 'img/certificates/two_stars.jpg',
         price: { rubles: 14900, pennies: 0 },
         oldPrice: { rubles: 18000, pennies: 0 },
@@ -33,7 +33,7 @@ export const CERTIFICATE_LIST: Certificate[] = [
     },
     {
         id: '3',
-        name: 'Сайфер "Созвездие"',
+        name: 'Сайфер',
         img: 'img/certificates/stars.jpg',
         price: { rubles: 19900, pennies: 0 },
         oldPrice: { rubles: 24000, pennies: 0 },
@@ -63,7 +63,7 @@ export const CERTIFICATE_LIST: Certificate[] = [
     },
     {
         id: '5',
-        name: 'EP "Три хита"',
+        name: 'EP',
         img: 'img/certificates/three_hits.jpg',
         price: { rubles: 27900, pennies: 0 },
         oldPrice: { rubles: 33000, pennies: 0 },
@@ -73,7 +73,7 @@ export const CERTIFICATE_LIST: Certificate[] = [
             'Тюнинг и монтаж вокала',
             'Сведение и мастеринг',
             'Время обработки записанной песни 5-6 рабочих дня.',
-            '«Три хита» вы получаете по e-mail',
+            '«EP» вы получаете по e-mail',
         ],
     },
 ];
