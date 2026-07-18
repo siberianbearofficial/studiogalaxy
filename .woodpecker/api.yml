@@ -1,0 +1,21 @@
+when:
+  - event: push
+    branch: master
+    path:
+      include:
+        - .woodpecker/api.yml
+        - backend/**
+  - event: manual
+
+steps:
+  - name: build-api
+    image: woodpeckerci/plugin-docker-buildx
+    settings:
+      repo: ghcr.io/siberianbearofficial/studiogalaxy-api
+      registry: ghcr.io
+      username: siberianbearofficial
+      password:
+        from_secret: GITHUB_TOKEN
+      context: backend
+      dockerfile: backend/Dockerfile
+      tag: latest
