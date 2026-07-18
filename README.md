@@ -40,10 +40,8 @@
 
 ```
 studio-galaxy/
-├── src                      # Angular-приложение
+├── frontend                 # Angular-приложение
 ├── backend                  # FastAPI-приложение
-├── Dockerfile               # образ фронтенда
-├── nginx.conf               # конфиг nginx
 ├── .woodpecker              # CI/CD-пайплайны
 └── README.md
 ```
@@ -55,6 +53,7 @@ studio-galaxy/
 ### Frontend
 
 ```bash
+cd frontend
 npm install
 ng serve
 ```
@@ -74,6 +73,7 @@ uvicorn main:app --reload
 ## Линтеры / форматтеры
 
 ```bash
+cd frontend
 npm run format
 ```
 

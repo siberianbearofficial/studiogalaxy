@@ -3,17 +3,11 @@ dist
 .angular
 
 .git
-.gitignore
-.github
-.woodpecker
-
-backend
 
 .vscode
 .idea
 
 *.log
-README.md
 .prettierrc
 .prettierignore
 Dockerfile
