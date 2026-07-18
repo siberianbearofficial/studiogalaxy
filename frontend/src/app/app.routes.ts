@@ -3,7 +3,7 @@ import { LandingPageComponent } from './presentation/pages/landing-page/landing-
 import { CartPageComponent } from './presentation/pages/cart-page/cart-page.component';
 
 export const routes: Routes = [
-    { path: '', title: 'Студия звукозаписи Галактика', component: LandingPageComponent },
+    { path: '', title: 'Студия звукозаписи Галактика — запись вокала в Москве', component: LandingPageComponent },
     { path: 'cart', title: 'Корзина', component: CartPageComponent },
     { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];
