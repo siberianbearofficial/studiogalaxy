@@ -1,0 +1,25 @@
+# зависимости и результаты сборки
+node_modules
+dist
+.angular
+
+# vcs и ci
+.git
+.gitignore
+.github
+.woodpecker
+
+# бэкенд собирается отдельным образом
+backend
+
+# редакторы
+.vscode
+.idea
+
+# прочее (nginx.conf НЕ игнорируем — он нужен runtime-стадии)
+*.log
+README.md
+.prettierrc
+.prettierignore
+Dockerfile
+.dockerignore
