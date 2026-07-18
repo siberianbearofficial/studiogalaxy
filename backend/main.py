@@ -13,6 +13,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:4200",
         "https://studiogalaxy.ru",
+        "https://studiogalaxy.nachert.art",
     ],
     allow_origin_regex=r"https://.*\.studiogalaxy\.netlify\.app",
     allow_headers=["*"],
