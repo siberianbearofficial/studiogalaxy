@@ -4,15 +4,7 @@ when:
     path:
       include:
         - .woodpecker/ui.yml
-        - Dockerfile
-        - nginx.conf
-        - package.json
-        - package-lock.json
-        - angular.json
-        - tsconfig.json
-        - tsconfig.app.json
-        - src/**
-        - public/**
+        - frontend/**
   - event: manual
 
 steps:
@@ -24,6 +16,6 @@ steps:
       username: siberianbearofficial
       password:
         from_secret: GITHUB_TOKEN
-      context: .
-      dockerfile: Dockerfile
+      context: frontend
+      dockerfile: frontend/Dockerfile
       tag: latest
