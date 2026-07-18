@@ -41,10 +41,10 @@
 ```
 studio-galaxy/
 ├── src                      # Angular-приложение
-├── backend                  # FastAPI-приложение (+ Dockerfile)
-├── Dockerfile               # образ фронтенда (сборка Angular → nginx)
-├── nginx.conf               # конфиг nginx (раздача статики + SPA-fallback)
-├── .woodpecker              # CI/CD-пайплайны (ui.yml, api.yml)
+├── backend                  # FastAPI-приложение
+├── Dockerfile               # образ фронтенда
+├── nginx.conf               # конфиг nginx
+├── .woodpecker              # CI/CD-пайплайны
 └── README.md
 ```
 
@@ -85,7 +85,5 @@ npm run format
 
 CI/CD построен на [Woodpecker](https://woodpecker.dev.nachert.art/repos/16). На каждый пуш в `master` (или вручную) собираются Docker-образы и публикуются в GitHub Container Registry:
 
-- **UI** — `ghcr.io/siberianbearofficial/studiogalaxy-ui` (Angular → nginx), пайплайн [`.woodpecker/ui.yml`](.woodpecker/ui.yml)
-- **API** — `ghcr.io/siberianbearofficial/studiogalaxy-api` (FastAPI), пайплайн [`.woodpecker/api.yml`](.woodpecker/api.yml)
-
-Каждый пайплайн срабатывает только при изменениях в своей части (фронтенд / `backend/**`), поэтому лишние сборки не запускаются. Деплой выполняется на собственном сервере из опубликованных образов.
+- **UI** — `ghcr.io/siberianbearofficial/studiogalaxy-ui` (Angular, nginx)
+- **API** — `ghcr.io/siberianbearofficial/studiogalaxy-api` (FastAPI)
